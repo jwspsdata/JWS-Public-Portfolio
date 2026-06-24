@@ -2,7 +2,7 @@
 
 Public portfolio of AI work by **John W. Spangler** — frameworks, applications, and deployment artifacts.
 
-**See live solutions in action:**
+**See live AI solutions in action:**
 **<a href="https://ai-bootcamp-jws-portfolio.streamlit.app/" target="_blank">ai-bootcamp-jws-portfolio.streamlit.app</a>**
 
 *(Source code is proprietary; detailed project documentation below)*
