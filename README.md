@@ -47,7 +47,7 @@ A production-ready Streamlit web application that uses Claude (Anthropic) to gen
 
 [AWS-Deploy/](AWS-Deploy/)
 
-Deployment artifacts and evidence for a **Time Series Forecast AI Copilot** running on AWS EC2 via Docker.
+Deployment artifacts and evidence for a **Time Series Forecast AI Copilot** running on AWS EC2 via Docker. A live solution is not currently available to avoid hosting costs.
 
 **Architecture:** EC2 t3.micro → nginx (SSL termination) → Streamlit app container
 
