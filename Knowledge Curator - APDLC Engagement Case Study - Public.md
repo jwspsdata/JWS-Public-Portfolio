@@ -2,10 +2,10 @@
 
 ## An APDLC Engagement Case Study — Public Overview
 
-**Status**: Design Phase Complete | Build Phase Pending  
+**Status**: Design Complete | Build Complete | Live in Production  
 **Tier**: Internal-Production  
 **Type**: Agentic Knowledge Management System  
-**Framework**: AI Product Development Life Cycle (APDLC) v7  
+**Framework**: AI Product Development Life Cycle (APDLC) v10  
 **Scope**: Capabilities overview — facilitation guides, artifact templates, and reference architecture specifics are proprietary and not included here
 
 ---
@@ -18,7 +18,7 @@ Knowledge Curator automates that capture loop. It monitors personal Gmail inboxe
 
 There is also a deliberate meta-point here. APDLC — the framework being validated through this engagement — exists in part because the pace of AI practice creates real delivery risk: teams are torn between building and keeping up. Knowledge Curator is a tool for staying current with the very problem APDLC addresses. The framework's first production engagement is itself a tool for staying current.
 
-This document covers the Frame and Design phases for Knowledge Curator, completed in full under APDLC. It demonstrates what the framework produces, how it handled a real agentic system design, and what it revealed about its own gaps.
+This document covers Frame, Design, and Build for Knowledge Curator — all complete under APDLC, with the system now live in production across all three monitored inboxes. It demonstrates what the framework produces at each phase, how it handled a real agentic system from concept through a running build, and what that build revealed about the framework's own gaps — gaps substantial enough that they were folded back into APDLC itself, producing its current version.
 
 **At a glance**:
 
@@ -26,6 +26,8 @@ This document covers the Frame and Design phases for Knowledge Curator, complete
 - **Solution**: Automated async pipeline (Gmail → Claude → Obsidian vault)
 - **Scale**: Single user; 3 configurable Gmail inboxes; personal tool
 - **Design artifacts produced**: Complete artifact set, review-complete, build-ready
+- **Build outcome**: All 5 build workstreams complete, full regression suite in place, all 3 inboxes live in production
+- **Framework feedback**: Findings from both Design and Build were folded back into APDLC, including a first-class Build phase in the current framework version
 
 ---
 
@@ -91,7 +93,7 @@ Obsidian Vault (curated-vault/)
 
 ---
 
-## APDLC in Practice: Frame → Design → Build-Ready
+## APDLC in Practice: Frame → Design → Build → Production
 
 ### Frame Phase
 
@@ -121,6 +123,14 @@ The Design phase produced a complete, review-ready artifact set — each artifac
 - **Build handoff** — workstream map with parallelization order, artifact review matrix, and project README
 
 **All artifacts are complete, reviewed, and committed to the repository.** Build can begin immediately.
+
+### Build Phase: From Design to Production
+
+Design produced a complete system on paper; Build is where that design met real Gmail traffic, real third-party websites, and real API failure conditions. The five planned workstreams (Infrastructure & State, Gmail Ingest, Content Summarization, Vault Filing, Orchestration & Notification) were all completed, backed by a full automated regression suite and repeated live-fire testing against each real inbox — always into a scratch copy of the vault first, reviewed by the owner, before any run was trusted against production.
+
+That live-fire testing did most of the real work. It surfaced roughly twenty concrete behavioral gaps no amount of additional up-front design would likely have caught, because they depended on real-world conditions: specific sites blocking automated fetching, tracking-parameter variations on shared links, PDF-format academic content, and an actual account-level API spending cap being reached mid-run. Each was diagnosed, fixed, tested, and re-validated through the same preview-before-production discipline established for the first mailbox — see *Key Build Decisions* below for two representative examples.
+
+**All three configured inboxes are now live in production**, each having processed its full historical backlog before being trusted with ongoing scheduled runs.
 
 ---
 
@@ -170,6 +180,24 @@ The Design phase produced a complete, review-ready artifact set — each artifac
 
 ---
 
+## Key Build Decisions
+
+Design decisions define what a system should do; Build decisions resolve what happens when that design meets reality. Two examples, chosen because both proved general enough to feed back into the framework itself.
+
+### 1. Generalize the Signal, Don't Enumerate the Cases
+
+**Decision**: When the system needs to distinguish content that failed for a structural reason from content that's a genuine problem, classify by a general signal the source itself provides — an HTTP status code, a declared content type — rather than a hand-maintained list of known-problematic sites or file patterns.
+
+**Rationale**: An early approach maintained a list of specific websites known to block automated fetching, adding one entry at a time as new cases turned up in live testing. The list kept growing and always lagged reality. Switching to status-code-based classification (a fetch blocked by rate-limiting looks different, at the protocol level, from a page that's genuinely gone) closed the gap permanently — every future case of the same shape is now handled automatically, with no list to maintain. The same principle, applied a second time, let the system correctly extract real content from academic PDF links instead of feeding raw binary data through an HTML-only text extractor.
+
+### 2. Fail Fast on Account-Level Failures, Not Just Per-Item Ones
+
+**Decision**: Distinguish an ordinary per-item failure (this one summary didn't work — flag it, move on) from an account-level failure (the API key has hit its configured spending limit — nothing else in this run can succeed either). The first should be handled item by item; the second should abort the whole run immediately and leave a clear marker for where to resume.
+
+**Rationale**: The original design treated every API failure the same way, which meant an account-level condition — hit twice, independently, in live testing — caused every remaining item in a batch to run through a full, doomed retry cycle before failing anyway. The fix distinguishes the two failure classes and, on an account-level failure, aborts immediately with a resume point rather than a fresh full-checkpoint system. This is a good illustration of right-sizing a fix: the smaller, targeted change fully solved the observed problem without adding complexity the system didn't need.
+
+---
+
 ## Technology Stack
 
 | Component | Technology | Rationale |
@@ -179,30 +207,35 @@ The Design phase produced a complete, review-ready artifact set — each artifac
 | **Email** | Gmail API + google-auth-oauthlib | OAuth token management included |
 | **URL Fetch** | httpx | Async-ready; timeout control; retry logic |
 | **Content Extraction** | trafilatura | HTML cleanup; boilerplate removal |
+| **PDF Extraction** | pypdf | Added in Build for academic-paper links; lightweight, dependency-minimal |
 | **Secrets** | python-dotenv | .env-based; excluded from git |
 | **Knowledge Vault** | Obsidian (local) | Owner's existing knowledge base; Git sync external |
-| **Orchestration** | Python (form TBD in Build) | Decision deferred: engineered code, durable-execution, or graph framework |
+| **Orchestration** | Engineered Python code | Decided in Build: a direct, explicit implementation — no workflow engine needed at this scale |
 
 ---
 
-## Build Readiness
+## Build Execution
 
-### 5 Workstreams with Defined Parallelization
+### 5 Workstreams, All Delivered
 
-**WS1: Infrastructure & State** *(critical path; must complete first)*  
+The workstream decomposition planned at Design held up through execution — no workstream needed to be split, merged, or re-scoped once Build began.
+
+**WS1: Infrastructure & State** — ✅ complete  
 Config schema, state persistence, secrets management, error logging, crash recovery.
 
-**WS2: Gmail Ingest** *(parallel with WS3, WS4)*  
+**WS2: Gmail Ingest** — ✅ complete  
 Gmail OAuth flow, email fetching per mailbox, sender validation, URL/body extraction.
 
-**WS3: Content Summarization Pipeline** *(parallel with WS2, WS4)*  
-URL fetching with cap/timeout/retries, HTML extraction, content quality checks, Claude API integration, tag generation.
+**WS3: Content Summarization Pipeline** — ✅ complete  
+URL fetching with cap/timeout/retries, HTML (and later PDF) extraction, content quality checks, Claude API integration, tag generation.
 
-**WS4: Vault Filing** *(parallel with WS2, WS3)*  
+**WS4: Vault Filing** — ✅ complete  
 Vault structure scanning, duplicate/near-duplicate detection, folder selection, FLAGGED routing, markdown generation, merge-in-place.
 
-**WS5: Orchestration & Notification** *(depends on WS1–4)*  
+**WS5: Orchestration & Notification** — ✅ complete  
 Orchestrator coordination, run loop, summary email generation (with token/cost), non-reprocessing flag, external trigger integration.
+
+**Verification approach**: an automated regression suite (network-free, purpose-built for each workstream) paired with repeated live-fire testing against real inboxes — every batch previewed into a scratch vault and reviewed before it was trusted against production. This two-layer approach is itself a pattern worth naming: the automated suite catches regressions; live-fire testing catches the gaps only real data exposes.
 
 ---
 
@@ -230,9 +263,15 @@ Cost is not post-hoc. Token budgets are defined per item, monthly estimates are 
 
 ### Capability: Framework Improvement via Real Engagement
 
-The framework's first production engagement surfaced seven improvements. A framework that enables work is good. A framework that enables work and reveals its own gaps through real use is better — because those gaps are systematic, not incidental, and the improvements belong in the methodology, not in project-specific workarounds.
+The framework's first production engagement surfaced seventeen improvements across its full lifecycle to date — seven during Design, ten more during Build. A framework that enables work is good. A framework that enables work and reveals its own gaps through real use is better — because those gaps are systematic, not incidental, and the improvements belong in the methodology, not in project-specific workarounds.
 
-This is the kind of feedback loop that makes methodology authorship credible: structured dry-runs find what breaks; real engagements find what was missing.
+This is the kind of feedback loop that makes methodology authorship credible: structured dry-runs find what breaks; real engagements find what was missing. Design-phase gaps tended to be missing questions — things the framework should have prompted for but didn't. Build-phase gaps were a different shape: missing *process discipline* (when to checkpoint work, how to define a workstream as genuinely complete, how to distinguish a failure that should be retried from one that should abort a whole run) that has nothing to do with the specific system being built and everything to do with how AI-assisted build work should be conducted in general.
+
+### Capability: The Feedback Loop Closes — Build Findings Reshape the Framework
+
+The most significant outcome of Knowledge Curator's Build phase isn't the running system — it's what happened to APDLC itself as a result. Because this was the framework's first real build, Build had previously been the thinnest-specified phase in the lifecycle: acknowledged, but with no defined artifact set of its own. Knowledge Curator's Build findings changed that directly: Build is now a first-class lifecycle phase in the current framework version, with its own required and situational artifacts, mirroring the treatment already given to Framing and Design.
+
+One finding in particular illustrates why real engagements matter more than theoretical design: an AI-directed build (an AI agent doing the implementation work, with a human resolving open questions as they arise) naturally produces a decision log of every point where a human had to step in. That log turns out to be a direct, measurable readout of exactly what a fully autonomous build of the same system would need to have specified in advance — a concrete bridge between how AI-assisted development is done today and what autonomous development will require going forward. This is now captured explicitly in the framework as a reusable pattern, not just a one-off observation about this project.
 
 ---
 
@@ -253,6 +292,6 @@ Full background: [linkedin.com/in/johnwspangler](https://www.linkedin.com/in/joh
 ---
 
 *Author: John W. Spangler*  
-*Version: 1.0 (June 2026)*  
-*Engagement Status: Design Complete | Build Pending*  
-*Framework: APDLC v7*
+*Version: 2.0 (July 2026)*  
+*Engagement Status: Design Complete | Build Complete | Live in Production*  
+*Framework: APDLC v10*
