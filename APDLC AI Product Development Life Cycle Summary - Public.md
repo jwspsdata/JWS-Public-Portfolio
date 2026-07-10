@@ -1,8 +1,8 @@
 # APDLC: AI Product Development Life Cycle
 ## A Framework for AI-Enabled Products — Public Overview
 
-**Current Version**: v9  
-**Status**: Actively developed; first production engagement underway — Frame and Design complete, Build next  
+**Current Version**: v10  
+**Status**: Actively developed; first production engagement (Knowledge Curator) complete through Build — its Build-phase findings drove the v10 elevation of Build to a first-class phase  
 **Type**: Proprietary methodology framework — this document is a capabilities overview only
 
 ---
@@ -13,7 +13,7 @@
 - **What it is** — a lightweight, risk-proportionate lifecycle and agentic reference architecture for taking AI-enabled products from idea to durable operation.
 - **Where it sits** — the product "outer loop" above the increasingly AI-automated SDLC; it ties together existing standards, patterns, and tools rather than replacing them.
 - **How it governs** — governance scales with assessed risk (enough for a regulated system, not theater for a prototype) and maps to NIST AI RMF, ISO/IEC 42001, and the OWASP LLM Top 10.
-- **Where it stands** — v9, refined through dry runs; first real engagement (Knowledge Curator) has completed Frame and Design.
+- **Where it stands** — v10, refined through dry runs and now through a real build; first real engagement (Knowledge Curator) has completed Frame, Design, and Build, with its Build-phase learnings folded back into the framework.
 - **Who built it** — an architect who has worked through every major tech transformation of the past two decades, where the human and organizational dimension is the recurring blind spot.
 
 ---
@@ -22,7 +22,7 @@
 
 APDLC is a framework I developed around a problem that's now widely reported: companies are struggling to turn AI investment into real ROI. Pilots stall, and systems that do ship often don't hold up in production. In addition, the staggering pace and volume of leading AI practices overwhelms even the most talented delivery teams. The model is rarely the hard part; the work around it is: governance, evaluation, human oversight, operational cost, and the fact that AI systems drift after launch. That work is what APDLC organizes.
 
-APDLC gives that shape a name and a structure. It has been developed across nine iterations and pressure-tested through structured dry-run engagements — realistic scenarios run end-to-end to find where it breaks before a real build depends on it. Its first production engagement has completed the Frame and Design phases, with real artifacts, and is now heading into build.
+APDLC gives that shape a name and a structure. It has been developed across ten iterations and pressure-tested through structured dry-run engagements — realistic scenarios run end-to-end to find where it breaks before a real build depends on it. Its first production engagement has completed the Frame, Design, and Build phases, with real artifacts; the build itself surfaced the findings that elevated Build to a first-class phase in v10.
 
 This framework is shaped by a particular vantage point. I have worked through the major enterprise technology transformations of the past two decades — the web, virtualization, cloud, Agile, Lean IT, and DevOps — as an individual contributor, a manager, and a coach. Every one of those waves under-invested in the human and organizational dimension and over-invested in the technology itself. AI is repeating the pattern. APDLC is built by someone who has lived and learned through these major Technology transformations.
 
@@ -138,8 +138,9 @@ APDLC did not arrive fully formed. The version history reflects real learning:
 - **Middle versions** added the architecture layer and formalized evaluation patterns, context engineering, and state management
 - **Recent versions** incorporated influence from external methodologies and leading agentic practice — most notably 12-Factor Agents, alongside published guidance from Anthropic and Google — added durable suspension and resume patterns, and formalized multi-channel trigger handling
 - **v9** named the delivery path concern for the first time and introduced the AADG (AI Autonomous Development Guide) acknowledges the future will have autonomous Agentic development teams and the unique requirements it brings
+- **v10** elevated **Build to a first-class phase** with its own artifact set, driven by the first real APDLC build; it also surfaced the *autonomy-gap correlation* — an AI-directed build's decision log is a direct measurement of what an autonomous build of the same system would need specified up front
 
-Each iteration came from either a structured dry-run that exposed a gap, or external thinking that I assessed, adapted, and integrated — not wholesale adopted. A continious improvment feedback loop embedded explicitly in the APDLC. The first production engagement now underway will be the framework's first test against a live build, and findings from it will feed the next iteration.
+Each iteration came from either a structured dry-run that exposed a gap, or external thinking that I assessed, adapted, and integrated — not wholesale adopted. A continious improvment feedback loop embedded explicitly in the APDLC. The first production engagement has now taken the framework through a live build, and its Build-phase findings fed directly into the v10 iteration.
 
 ---
 
@@ -149,7 +150,7 @@ The framework's first production engagement is **Knowledge Curator** — an agen
 
 Knowledge Curator exists to keep pace with the very thing this framework wrestles with: the pace of change in AI practice. It summarizes personally currated emerging techniques into a dedicated, isolated vault — kept separate from 15+ years of personal career knowledge — with the eventual goal of connecting that vault to an LLM as a design and challenge partner. APDLC's first real test is itself a tool for staying current.
 
-Its Frame and Design phases are complete. Design alone produced a full set of structured artifacts — problem framing, agent and tool contracts, an orchestration graph, a failure-mode catalog, a cost model, escalation and human-approval policies, and a permission matrix — each reviewed against a defined role matrix before the build was authorized.
+Its Frame, Design, and Build phases are complete. Design alone produced a full set of structured artifacts — problem framing, agent and tool contracts, an orchestration graph, a failure-mode catalog, a cost model, escalation and human-approval policies, and a permission matrix — each reviewed against a defined role matrix before the build was authorized. Build then produced the framework's first real Build-phase artifacts (a decision log, a findings log, a workstream closeout discipline) and, through live testing, the findings that reshaped the framework's own Build phase.
 
 A single-owner internal tool, yet specified rigorously enough that its build sequence, failure handling, and cost envelope were all known before a line of production code was written.
 
@@ -186,7 +187,7 @@ If you are reading this to assess capability rather than to use the framework:
 - **Systems thinking at product and architecture altitude simultaneously** — APDLC holds lifecycle concerns and implementation concerns in the same framework without conflating them
 - **Principled opinionation** — every design decision in the framework has a *reason*, and the reasons are grounded in actual failure modes, not preferences
 - **Domain-agnostic pattern recognition** — the same core concerns (risk posture, HITL strategy, evaluation, cost, auditability) appear in every AI-enabled product regardless of domain; APDLC surfaces them without prescribing domain-specific answers
-- **Iterative methodology development** — v9 is the result of treating the framework itself as a product with its own feedback loop
+- **Iterative methodology development** — v10 is the result of treating the framework itself as a product with its own feedback loop; the Build phase was reshaped by findings from the framework's own first real build
 
 ---
 
@@ -209,5 +210,5 @@ Full background: [linkedin.com/in/johnwspangler](https://www.linkedin.com/in/joh
 ---
 
 *Author: John W. Spangler*  
-*Version: 9 (June 2026)*  
-*Status: Actively developed; first production engagement underway — Frame and Design complete*
+*Version: 10 (July 2026)*  
+*Status: Actively developed; first production engagement (Knowledge Curator) complete through Build*
