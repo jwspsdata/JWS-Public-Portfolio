@@ -3,7 +3,7 @@
 Public portfolio of AI work by **John W. Spangler** — methodology, applied systems design, production applications, and deployment artifacts.
 
 **Live demo:**  
-**<a href="https://jws-ai-portfolio.streamlit.app/"</a>**
+**[jws-ai-portfolio.streamlit.app](https://jws-ai-portfolio.streamlit.app/)**
 
 *Source code is proprietary. Public writeups and deployment evidence are included where appropriate.*
 
