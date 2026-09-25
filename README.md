@@ -60,7 +60,7 @@ Deployment artifacts and evidence for a **Time Series Forecast AI Copilot** depl
 
 **Highlights:**
 - EC2 + nginx + Streamlit container deployment
-- Username/password plus Google/Microsoft OAuth
+- Username/password authentication (bcrypt-hashed, role-based access)
 - CSV/Excel ingest into SQLite
 - Async LangGraph forecasting workflow with XGBoost
 - 95% Gaussian prediction intervals (fixed z-score, not calibrated conformal prediction)
