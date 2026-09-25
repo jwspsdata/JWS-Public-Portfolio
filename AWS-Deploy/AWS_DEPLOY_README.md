@@ -53,7 +53,7 @@ AWS EC2 t3.micro (us-east-1)
 | SSL | Let's Encrypt (Certbot) |
 | App Framework | Streamlit |
 | AI / Agents | LangGraph (async), LangChain, OpenAI |
-| Forecasting Model | XGBoost (`XGBRegressor`) — fits on engineered time-series features, generates predictions with 95% conformal confidence intervals |
+| Forecasting Model | XGBoost (`XGBRegressor`) — fits on engineered time-series features, generates predictions with 95% Gaussian prediction intervals (fixed z-score, not calibrated conformal prediction) |
 | Authentication | streamlit-authenticator (username/password, Google OAuth, Microsoft OAuth) |
 | Data | CSV/Excel upload → temporary SQLite database |
 
@@ -110,8 +110,8 @@ The Streamlit container is never exposed directly to the internet — all traffi
 - **Authentication** — username/password login with hashed passwords; Google and Microsoft OAuth via `streamlit-authenticator`; role-based access (admin / editor / viewer)
 - **File upload** — CSV or Excel files converted to a temporary SQLite database on upload
 - **Demo data** — Walmart sales dataset pre-loaded for quick demonstrations
-- **AI Forecast Agent** — async LangGraph team answering natural-language questions, generating SQL aggregations, and producing time series forecasts; the forecasting engine uses **XGBoost** (`XGBRegressor`) with engineered date features (year, month, day, weekday, numeric index), conformal prediction for 95% confidence intervals, and `pytimetk` for future frame generation
-- **OpenAI API key** — loaded from Streamlit secrets vault or entered manually in the sidebar
+- **AI Forecast Agent** — async LangGraph team answering natural-language questions, generating SQL aggregations, and producing time series forecasts; the forecasting engine uses **XGBoost** (`XGBRegressor`) with engineered date features (year, month, day, weekday, numeric index), a fixed-z Gaussian prediction interval for 95% confidence intervals (not calibrated conformal prediction), and `pytimetk` for future frame generation
+- **OpenAI API key** — entered manually in the sidebar
 
 ---
 

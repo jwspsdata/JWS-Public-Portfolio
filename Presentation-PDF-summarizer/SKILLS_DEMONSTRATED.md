@@ -202,7 +202,7 @@ if st.session_state.summaries_md:
 - ✅ **Orchestration pattern**: Coordinator abstraction
 - ✅ **Configuration over code**: TOML configs, model registry
 - ✅ **Error handling strategy**: Graceful degradation, user feedback
-- ✅ **Testing architecture**: 32 unit tests with clear boundaries
+- ✅ **Testing architecture**: 86 unit tests with clear boundaries
 
 #### Evidence
 - 7 core modules, each with single responsibility
@@ -358,13 +358,14 @@ def parse_structured_lists(slide_data: list[dict]) -> tuple[dict, list[str]]:
 #### Evidence
 ```
 test_content_builders.py       6 tests    Title/author extraction
-test_list_parsing.py            5 tests    Sequence detection
-test_llm_summarizer.py          4 tests    Prompt building
-test_model_config.py            6 tests    Pricing, cost calculation
-test_text_processing.py         5 tests    Text cleaning
-test_theme_analyzer.py          4 tests    Deck parsing
-test_summarizer_contract.py     1 test     Integration (optional)
-Total:                         32 tests
+test_list_parsing.py            2 tests    Sequence detection
+test_llm_summarizer.py          20 tests   Prompt building
+test_model_config.py            18 tests   Pricing, cost calculation
+test_text_processing.py         3 tests    Text cleaning
+test_theme_analyzer.py          17 tests   Deck parsing
+test_summarizer_contract.py     19 tests   Integration (optional)
+test_placeholder.py             1 test     Placeholder (no-op)
+Total:                         86 tests
 ```
 
 #### Example Tests
@@ -436,7 +437,7 @@ def test_calculate_cost():
 | **Streamlit** | Advanced | Session state, workflows, dynamic UI |
 | **PyMuPDF** | Intermediate | Text/image extraction, content classification |
 | **Regex** | Intermediate | Pattern matching for text extraction |
-| **Pytest** | Intermediate | 32 tests, clear test design |
+| **Pytest** | Intermediate | 86 tests, clear test design |
 | **Git/GitHub** | Beginner-Intermediate | Private repo, .gitignore, commits |
 
 ### By Competency Area

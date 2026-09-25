@@ -69,7 +69,7 @@ A companion Streamlit app acts as an MCP **client**, not just a server demo. It 
 | MCP Framework | FastMCP (SSE + stdio transports) |
 | Agent Runtime | LangGraph, LangChain, OpenAI |
 | Marketing RAG | ChromaDB (local vector store) |
-| Forecasting Model | XGBoost (`XGBRegressor`) with conformal confidence intervals |
+| Forecasting Model | XGBoost (`XGBRegressor`) with Gaussian (fixed z-score) confidence intervals |
 | Cloud | AWS EC2 (containerized via Docker Compose) |
 | Reverse Proxy | Nginx with SSL termination |
 | SSL | Let's Encrypt (Certbot) |

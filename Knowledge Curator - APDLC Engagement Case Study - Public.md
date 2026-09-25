@@ -23,7 +23,7 @@ This document covers Frame, Design, and Build for Knowledge Curator — all comp
 **At a glance**:
 
 - **Problem**: Manually curating content across multiple inboxes — time-consuming, inconsistent, error-prone
-- **Solution**: Automated async pipeline (Gmail → Claude → Obsidian vault)
+- **Solution**: Automated pipeline (Gmail → Claude → Obsidian vault)
 - **Scale**: Single user; 3 configurable Gmail inboxes; personal tool
 - **Design artifacts produced**: Complete artifact set, review-complete, build-ready
 - **Build outcome**: All 5 build workstreams complete, full regression suite in place, all 3 inboxes live in production
@@ -205,7 +205,7 @@ Design decisions define what a system should do; Build decisions resolve what ha
 | **Runtime** | Python 3.10+ | Locally executed; no cloud infrastructure |
 | **LLM** | Claude Sonnet (config-driven) | Quality/cost balance; sufficient for blog and academic content |
 | **Email** | Gmail API + google-auth-oauthlib | OAuth token management included |
-| **URL Fetch** | httpx | Async-ready; timeout control; retry logic |
+| **URL Fetch** | httpx | Sync client; timeout control; retry logic |
 | **Content Extraction** | trafilatura | HTML cleanup; boilerplate removal |
 | **PDF Extraction** | pypdf | Added in Build for academic-paper links; lightweight, dependency-minimal |
 | **Secrets** | python-dotenv | .env-based; excluded from git |

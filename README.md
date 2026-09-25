@@ -48,7 +48,7 @@ A production-ready Streamlit application that uses Claude to generate structured
 - Cross-deck thematic synthesis with citation tracking
 - Multiple Claude model options with token and cost visibility
 - Vision fallback for difficult PDFs
-- 32 unit tests and Streamlit Community Cloud deployment
+- 86 unit tests and Streamlit Community Cloud deployment
 
 **Stack:** Python 3.11+, Anthropic Claude API, PyMuPDF, Streamlit
 
@@ -63,7 +63,7 @@ Deployment artifacts and evidence for a **Time Series Forecast AI Copilot** depl
 - Username/password plus Google/Microsoft OAuth
 - CSV/Excel ingest into SQLite
 - Async LangGraph forecasting workflow with XGBoost
-- 95% conformal confidence intervals
+- 95% Gaussian prediction intervals (fixed z-score, not calibrated conformal prediction)
 
 **Stack:** AWS EC2, Docker, Docker Compose, Nginx, Let's Encrypt, Streamlit, LangGraph, XGBoost, streamlit-authenticator
 

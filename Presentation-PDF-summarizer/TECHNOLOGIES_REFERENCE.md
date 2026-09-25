@@ -124,7 +124,7 @@ themes_usage          # Token counts from theme analysis
   - `collections.abc.Callable`: Type hints for callbacks
 
 ### Testing
-- **pytest**: 32 unit tests
+- **pytest**: 86 unit tests
 - **pytest-cov** (optional): Coverage reporting
 
 ---

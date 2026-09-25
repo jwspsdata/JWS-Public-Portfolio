@@ -5,7 +5,7 @@ A production-ready Streamlit web application for intelligently summarizing prese
 **Live**: Deployed on Streamlit Community Cloud  
 **Repository**: Private GitHub (jwspsdata)  
 **Technologies**: Python 3.11+, Anthropic Claude API, PyMuPDF, Streamlit  
-**Status**: Production-ready with 32 unit tests
+**Status**: Production-ready with 86 unit tests
 
 ---
 
@@ -711,17 +711,17 @@ python -m pdf_summary.summarizer --model claude-opus-4-6
 
 ### Test Coverage
 
-**32 unit tests** across 8 test modules:
+**86 unit tests** across 8 test modules:
 
 | Module | Tests | Focus |
 |--------|-------|-------|
 | `test_content_builders.py` | 6 | Title extraction, author inference, chart detection |
-| `test_list_parsing.py` | 5 | Sequence detection, rendering |
-| `test_llm_summarizer.py` | 4 | Prompt building, JSON validation |
-| `test_model_config.py` | 6 | Model registry, pricing, cost calculation |
-| `test_text_processing.py` | 5 | Cleaning, normalization, sanitization |
-| `test_theme_analyzer.py` | 4 | Deck parsing, indexing, citation validation |
-| `test_summarizer_contract.py` | 1 | End-to-end contract test (optional) |
+| `test_list_parsing.py` | 2 | Sequence detection, rendering |
+| `test_llm_summarizer.py` | 20 | Prompt building, JSON validation |
+| `test_model_config.py` | 18 | Model registry, pricing, cost calculation |
+| `test_text_processing.py` | 3 | Cleaning, normalization, sanitization |
+| `test_theme_analyzer.py` | 17 | Deck parsing, indexing, citation validation |
+| `test_summarizer_contract.py` | 19 | End-to-end contract test (optional) |
 | `test_placeholder.py` | 1 | Placeholder (no-op) |
 
 ### Running Tests
@@ -847,7 +847,7 @@ def test_clean_lines():
 - Cost tracking and estimation
 - Vision-based title extraction fallback
 - Comprehensive error handling
-- 32 unit tests
+- 86 unit tests
 - Streamlit Cloud deployment
 
 ### Potential Enhancements 🚀
@@ -873,7 +873,7 @@ def test_clean_lines():
 ✅ **Web UI**: Streamlit with sophisticated session state management  
 ✅ **Prompt Engineering**: Structured outputs via system prompts and JSON parsing  
 ✅ **Error Handling**: Graceful degradation and user-facing error messages  
-✅ **Testing**: 32 unit tests across all core modules  
+✅ **Testing**: 86 unit tests across all core modules  
 ✅ **Deployment**: Works locally and on Streamlit Cloud  
 ✅ **Design Patterns**: Orchestration, two-phase processing, configurable models  
 
