@@ -202,9 +202,9 @@ Design decisions define what a system should do; Build decisions resolve what ha
 
 | Component | Technology | Rationale |
 | ----------- | ----------- | ----------- |
-| **Runtime** | Python 3.10+ | Locally executed; no cloud infrastructure |
+| **Runtime** | Python 3.11+ | Locally executed; no cloud infrastructure |
 | **LLM** | Claude Sonnet (config-driven) | Quality/cost balance; sufficient for blog and academic content |
-| **Email** | Gmail API + google-auth-oauthlib | OAuth token management included |
+| **Email** | Gmail IMAP/SMTP with app passwords | Simpler than OAuth for a single-owner personal tool; no token-refresh lifecycle to manage |
 | **URL Fetch** | httpx | Sync client; timeout control; retry logic |
 | **Content Extraction** | trafilatura | HTML cleanup; boilerplate removal |
 | **PDF Extraction** | pypdf | Added in Build for academic-paper links; lightweight, dependency-minimal |
@@ -224,7 +224,7 @@ The workstream decomposition planned at Design held up through execution — no 
 Config schema, state persistence, secrets management, error logging, crash recovery.
 
 **WS2: Gmail Ingest** — ✅ complete  
-Gmail OAuth flow, email fetching per mailbox, sender validation, URL/body extraction.
+Gmail IMAP/SMTP connection handling, email fetching per mailbox, sender validation, URL/body extraction.
 
 **WS3: Content Summarization Pipeline** — ✅ complete  
 URL fetching with cap/timeout/retries, HTML (and later PDF) extraction, content quality checks, Claude API integration, tag generation.

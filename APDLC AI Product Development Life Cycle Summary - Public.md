@@ -137,10 +137,10 @@ APDLC did not arrive fully formed. The version history reflects real learning:
 - **Early versions** focused on getting the lifecycle phases right — what questions does each phase answer, what does it produce?
 - **Middle versions** added the architecture layer and formalized evaluation patterns, context engineering, and state management
 - **Recent versions** incorporated influence from external methodologies and leading agentic practice — most notably 12-Factor Agents, alongside published guidance from Anthropic and Google — added durable suspension and resume patterns, and formalized multi-channel trigger handling
-- **v9** named the delivery path concern for the first time and introduced the AADG (AI Autonomous Development Guide) acknowledges the future will have autonomous Agentic development teams and the unique requirements it brings
+- **v9** named the delivery path concern for the first time and introduced the AADG (AI Autonomous Development Guide), which acknowledges that the future will have autonomous agentic development teams and addresses the unique requirements that brings
 - **v10** elevated **Build to a first-class phase** with its own artifact set, driven by the first real APDLC build; it also surfaced the *autonomy-gap correlation* — an AI-directed build's decision log is a direct measurement of what an autonomous build of the same system would need specified up front
 
-Each iteration came from either a structured dry-run that exposed a gap, or external thinking that I assessed, adapted, and integrated — not wholesale adopted. A continious improvment feedback loop embedded explicitly in the APDLC. The first production engagement has now taken the framework through a live build, and its Build-phase findings fed directly into the v10 iteration.
+Each iteration came from either a structured dry-run that exposed a gap, or external thinking that I assessed, adapted, and integrated — not wholesale adopted. A continuous improvement feedback loop is embedded explicitly in APDLC itself. The first production engagement has now taken the framework through a live build, and its Build-phase findings fed directly into the v10 iteration.
 
 ---
 

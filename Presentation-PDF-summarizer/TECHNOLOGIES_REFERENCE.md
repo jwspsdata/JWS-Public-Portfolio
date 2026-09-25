@@ -305,12 +305,13 @@ cost = (
 
 **Test Modules**:
 - `test_content_builders.py` (6 tests): Title/author extraction, chart detection
-- `test_list_parsing.py` (5 tests): Sequence detection, rendering
-- `test_llm_summarizer.py` (4 tests): Prompt building, response validation
-- `test_model_config.py` (6 tests): Model registry, pricing, costs
-- `test_text_processing.py` (5 tests): Cleaning, normalization, sanitization
-- `test_theme_analyzer.py` (4 tests): Deck parsing, indexing
-- `test_summarizer_contract.py` (1 test): Integration test (optional)
+- `test_list_parsing.py` (2 tests): Sequence detection, rendering
+- `test_llm_summarizer.py` (20 tests): Prompt building, response validation
+- `test_model_config.py` (18 tests): Model registry, pricing, costs
+- `test_text_processing.py` (3 tests): Cleaning, normalization, sanitization
+- `test_theme_analyzer.py` (17 tests): Deck parsing, indexing
+- `test_summarizer_contract.py` (19 tests): Integration test (optional)
+- `test_placeholder.py` (1 test): Placeholder (no-op)
 
 **Test Execution**:
 ```bash
