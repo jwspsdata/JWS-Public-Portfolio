@@ -41,6 +41,8 @@ AWS EC2 t3.micro (us-east-1)
           │  Let's Encrypt SSL certificate renewal
 ```
 
+*The domain above belongs to the course provider (Business Science, my AI bootcamp instructor) and was used for this demo with their permission — no personal domain was registered for this project.*
+
 ---
 
 ## Tech Stack
