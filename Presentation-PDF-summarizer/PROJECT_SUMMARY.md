@@ -133,7 +133,7 @@ Extracts 13 structured fields for each PDF:
 | **skills_role_evolution** | New capabilities needed | "Teams must learn Go and Kubernetes; legacy COBOL skills deprecating" |
 | **chart_table_insights** | Data-heavy slide findings | "Timeline visualization shows 40% reduction in migration phases" |
 | **risks_failure_modes** | What went wrong or nearly did | "Early rollouts revealed network latency issues in new region" |
-| **presenter_orgs** | Organization(s) represented | "Telenet, Equal Experts" |
+| **presenter_orgs** | Organization(s) represented | "Acme Corp, Delivery Partner Inc." |
 
 ### 2. Thematic Cross-Deck Analysis (Multiple PDFs)
 
