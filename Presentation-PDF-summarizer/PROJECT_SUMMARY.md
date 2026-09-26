@@ -1,11 +1,11 @@
 # Presentation PDF Summarizer - Project Summary
 
-A production-ready Streamlit web application for intelligently summarizing presentation slide deck PDFs using Claude (Anthropic). Supports single PDF analysis and cross-deck thematic synthesis.
+A Streamlit web application that uses Claude to generate structured summaries of presentation slide deck PDFs, supporting both single-deck analysis and cross-deck thematic synthesis.
 
 **Live**: Deployed on Streamlit Community Cloud  
 **Repository**: Private GitHub (jwspsdata)  
 **Technologies**: Python 3.11+, Anthropic Claude API, PyMuPDF, Streamlit  
-**Status**: Production-ready with 86 unit tests
+**Status**: Deployed, with an 86-test suite covering core logic
 
 ---
 
@@ -26,7 +26,7 @@ A production-ready Streamlit web application for intelligently summarizing prese
 ## Project Overview
 
 ### Purpose
-Generate structured, actionable summaries of presentation slides using advanced LLM analysis, enabling quick knowledge extraction from conference decks, training materials, and business presentations.
+Generate structured, actionable summaries of presentation slides using LLM analysis, enabling quick knowledge extraction from conference decks, training materials, and business presentations.
 
 ### Who It's For
 - **Research teams** analyzing multiple conference presentations for trends
@@ -35,11 +35,11 @@ Generate structured, actionable summaries of presentation slides using advanced 
 - **Organizations** synthesizing learnings across presentations
 
 ### What Makes It Different
-- **Structured extraction**: Not just text summaries — extracts specific fields (thesis, problem, approach, evidence, value, implications)
-- **Multi-slide intelligence**: Understands how information is structured across slides (lists, charts, images)
-- **Cross-deck synthesis**: Beyond single-PDF analysis, detects patterns across multiple presentations
-- **Vision-enabled fallback**: Uses Claude's vision capabilities for PDFs where text extraction fails
-- **Cost-aware**: Real-time token tracking and cost calculation; model selection impacts final price
+- **Structured extraction**: not just text summaries — extracts specific fields (thesis, problem, approach, evidence, value, implications)
+- **Multi-slide intelligence**: understands how information is structured across slides (lists, charts, images)
+- **Cross-deck synthesis**: beyond single-PDF analysis, detects patterns across multiple presentations
+- **Vision-enabled fallback**: uses Claude's vision capabilities for PDFs where text extraction fails
+- **Cost-aware**: real-time token tracking and cost calculation; model selection affects final price
 
 ---
 
@@ -140,19 +140,19 @@ Extracts 13 structured fields for each PDF:
 Synthesizes patterns across decks into 10 thematic sections:
 
 - **Executive Summary**: 5-7 headline findings
-- **Common Challenges**: Team/org obstacles
-- **Risks & Failure Modes**: Cautionary patterns
-- **Common Practices**: How work is organized
-- **Technology Patterns**: Tools and architectures
-- **Governance & Guardrails**: Control mechanisms
-- **Value & Outcomes**: Measured results
-- **Organizational Readiness**: Cultural/structural factors
-- **Adoption Maturity & Speed**: Scaling patterns
-- **Skills & Role Evolution**: Capability changes
+- **Common Challenges**: team/org obstacles
+- **Risks & Failure Modes**: cautionary patterns
+- **Common Practices**: how work is organized
+- **Technology Patterns**: tools and architectures
+- **Governance & Guardrails**: control mechanisms
+- **Value & Outcomes**: measured results
+- **Organizational Readiness**: cultural/structural factors
+- **Adoption Maturity & Speed**: scaling patterns
+- **Skills & Role Evolution**: capability changes
 
-**Citation tracking**: Each claim cites source decks [N] — full traceability.
+**Citation tracking**: each claim cites source decks [N] for traceability.
 
-### 3. Smart Content Handling
+### 3. Content Handling
 
 **Text Extraction & Cleaning**
 - Multi-line text from PyMuPDF with proper formatting
@@ -175,7 +175,7 @@ Synthesizes patterns across decks into 10 thematic sections:
 **Vision Fallback**
 - When text extraction yields no title: renders PDF slide as PNG
 - Sends image to Claude for title extraction
-- Automatic fallback to heuristic extraction if vision fails
+- Falls back to heuristic extraction if vision fails
 
 ### 4. Model Selection & Cost Tracking
 
@@ -183,9 +183,9 @@ Synthesizes patterns across decks into 10 thematic sections:
 
 | Model | Speed | Cost | Best For |
 |-------|-------|------|----------|
-| **Haiku 4.5** | ⚡⚡⚡ Fastest | ✓ Cheapest | High-volume batch jobs, cost-sensitive |
-| **Sonnet 4.6** | ⚡⚡ Fast | ✓ Moderate | Default; balanced speed/cost/quality |
-| **Opus 4.6** | ⚡ Slower | ✓ Expensive | Complex decks, nuanced reasoning needed |
+| **Haiku 4.5** | Fastest | Cheapest | High-volume batch jobs, cost-sensitive |
+| **Sonnet 4.6** | Fast | Moderate | Default; balanced speed/cost/quality |
+| **Opus 4.6** | Slower | Most expensive | Complex decks, nuanced reasoning needed |
 
 **Real-time cost calculation:**
 - Input tokens (prompt + slide content)
@@ -197,27 +197,27 @@ Synthesizes patterns across decks into 10 thematic sections:
 - Tokens used: `234,567 in / 12,345 out / 567 cached`
 - Estimated cost: `$0.0234`
 
-### 5. Production Readiness
+### 5. Reliability
 
 **Error Handling**
-- ✅ Duplicate filename detection
-- ✅ Encrypted PDF rejection
-- ✅ Empty PDF handling
-- ✅ Unreadable PDF graceful failure
-- ✅ LLM timeout/retry logic
-- ✅ Malformed JSON recovery
+- Duplicate filename detection
+- Encrypted PDF rejection
+- Empty PDF handling
+- Unreadable PDF graceful failure
+- LLM timeout/retry logic
+- Malformed JSON recovery
 
 **State Management**
-- ✅ Session state persistence across reruns
-- ✅ File upload change detection (reset all processing)
-- ✅ Model change handling (reset cached results)
-- ✅ Progress tracking across multi-file batches
+- Session state persistence across reruns
+- File upload change detection (reset all processing)
+- Model change handling (reset cached results)
+- Progress tracking across multi-file batches
 
 **Deployment**
-- ✅ Works locally (environment variable) and cloud (Streamlit secrets)
-- ✅ No file I/O side effects (uses tempfiles)
-- ✅ Stateless API calls (Anthropic SDK)
-- ✅ Configurable via TOML files
+- Works locally (environment variable) and cloud (Streamlit secrets)
+- No file I/O side effects (uses tempfiles)
+- Stateless API calls (Anthropic SDK)
+- Configurable via TOML files
 
 ---
 
@@ -234,10 +234,10 @@ Synthesizes patterns across decks into 10 thematic sections:
 **Total package size**: ~50MB (slim; no heavy ML frameworks)
 
 ### Design Approach
-- **Minimal dependencies**: Only what's essential
-- **Modern Python 3.11+**: Type hints, match statements, structural pattern matching
-- **Synchronous I/O**: Straightforward flow; Anthropic client handles async internally
-- **No caching framework**: Leverages Anthropic's prompt caching API directly
+- **Minimal dependencies**: only what's essential
+- **Modern Python 3.11+**: type hints, match statements, structural pattern matching
+- **Synchronous I/O**: straightforward flow; Anthropic client handles async internally
+- **No caching framework**: leverages Anthropic's prompt caching API directly
 
 ---
 
@@ -257,7 +257,7 @@ for each file:
 ```
 **Output**: `(valid_paths: list[Path], error_messages: list[str])`
 
-**User decision**: Proceed with valid files or fix and re-upload.
+**User decision**: proceed with valid files or fix and re-upload.
 
 ### Phase 2: Content Extraction (Local, No API)
 
@@ -279,7 +279,7 @@ Build metadata:
 ```
 **Output**: `slide_data: list[dict]` with 5-key entries per slide
 
-**Cost**: None (local processing)
+**Cost**: none (local processing)
 
 ### Phase 3: LLM Summarization (Claude API)
 
@@ -518,9 +518,9 @@ MODELS = {
 
 ## Design Patterns
 
-### 1. **Orchestration Pattern** (summarizer.py)
+### 1. Orchestration (summarizer.py)
 
-Main entry point coordinates sub-modules without low-level logic:
+The entry point coordinates sub-modules without embedding their low-level logic:
 
 ```python
 def generate_summary(...):
@@ -541,24 +541,17 @@ def generate_summary(...):
     return pdfs, md, total_usage
 ```
 
-**Benefit**: Clear flow; easy to test; easy to extend with new processing steps.
+Keeping the coordinator thin makes the flow easy to follow and easy to extend with new processing steps without touching the orchestration logic itself.
 
-### 2. **Two-Phase Processing** (app.py + summarizer.py)
+### 2. Two-Phase Processing (app.py + summarizer.py)
 
-**Phase 1 (No API)**:
-- Preflight: Duplicate detection, PDF validation
-- User decision: Confirm or fix issues
-- Efficiency: Fail fast before API calls
+**Phase 1 (no API calls)**: preflight duplicate detection and PDF validation, with a user decision point to confirm or fix issues before anything is sent to Claude.
 
-**Phase 2 (With API)**:
-- Extract content locally
-- Call Claude for each deck
-- Aggregate results
-- Format output
+**Phase 2 (with API)**: extract content locally, call Claude per deck, aggregate results, format output.
 
-**Benefit**: Minimize wasted API calls; give users control.
+This ordering means a batch of bad files fails before any API cost is incurred, rather than partway through a paid run.
 
-### 3. **Session State as Single Source of Truth** (app.py)
+### 3. Session State as Single Source of Truth (app.py)
 
 ```python
 _STATE_KEYS = (
@@ -566,7 +559,7 @@ _STATE_KEYS = (
     "pdf_count", "uploaded_names", "preflight_done", ...
 )
 
-# Every rerrun: check state to skip completed steps
+# Every rerun: check state to skip completed steps
 if st.session_state.summaries_md is not None:
     # Display results; skip processing
     st.download_button(...)
@@ -575,11 +568,11 @@ else:
     st.button("Summarize", ...)
 ```
 
-**Benefit**: Survives Streamlit reruns; clear state flow; easy debugging.
+Streamlit reruns the whole script on every interaction, so state has to live outside the function body to survive that. Tracking it explicitly in one place keeps the state transitions legible.
 
-### 4. **Prompt as Source of Truth** (llm_summarizer.py, theme_analyzer.py)
+### 4. Prompt as Source of Truth (llm_summarizer.py, theme_analyzer.py)
 
-System prompts define exact structure and rules:
+System prompts define the exact output structure and rules directly, rather than leaving field definitions implicit in downstream parsing code:
 
 ```python
 SYSTEM_PROMPT = """
@@ -592,11 +585,11 @@ Produce a structured JSON with exactly these fields:
 """
 ```
 
-**Benefit**: Easy to evolve output structure; clear requirements for LLM; testable.
+Keeping the schema in the prompt (rather than duplicated across prompt and parser) means the output structure only needs to change in one place.
 
-### 5. **Configurable Models** (model_config.py)
+### 5. Configurable Models (model_config.py)
 
-Registry pattern decouples model metadata from code:
+A registry decouples model identifiers and pricing from the rest of the code:
 
 ```python
 MODELS = {
@@ -605,31 +598,21 @@ MODELS = {
     "claude-haiku-4-5-20251001": {...},
 }
 
-# Add new model: just add to dict
-# UI automatically updates
-# Pricing auto-calculates
+# Adding a new model is a dict entry -- the UI dropdown and pricing pick it up automatically
 ```
 
-**Benefit**: Easy to add new models; transparent pricing; testable.
-
-### 6. **Utility Modules for Side Effects** (text_processing.py, list_parsing.py)
-
-Pure functions for text/list transformations:
+### 6. Pure Functions for Text/List Transformations (text_processing.py, list_parsing.py)
 
 ```python
-# Avoid: class TextProcessor { def clean() { ... } }
-# Prefer: def clean_lines(text: str) -> list[str] { ... }
-
-# Benefits:
-# - Easier to test (no setup/teardown)
-# - Easier to compose (chaining)
-# - Easier to reuse
-# - No hidden state
+# Avoided: class TextProcessor { def clean() { ... } }
+# Used instead: def clean_lines(text: str) -> list[str] { ... }
 ```
 
-### 7. **Error Handling as Validation** (summarizer.py)
+Plain functions over stateful classes here, since these are pure transformations with no reason to carry state between calls — they're easier to test and compose as a result.
 
-Errors inform user; never crash silently:
+### 7. Error Handling as Validation (summarizer.py)
+
+Errors are surfaced to the user rather than raised as unhandled exceptions:
 
 ```python
 def validate_pdfs(paths):
@@ -642,7 +625,7 @@ def validate_pdfs(paths):
     return valid, errors
 ```
 
-**Benefit**: User can fix and retry; app stays responsive; clear error messages.
+This lets a batch with one bad file continue processing the rest, with a clear message about what to fix.
 
 ---
 
@@ -711,7 +694,7 @@ python -m pdf_summary.summarizer --model claude-opus-4-6
 
 ### Test Coverage
 
-**86 unit tests** across 8 test modules:
+86 unit tests across 8 test modules:
 
 | Module | Tests | Focus |
 |--------|-------|-------|
@@ -757,16 +740,16 @@ def test_clean_lines():
 
 ## Production Considerations
 
-### 1. **API Rate Limiting**
+### 1. API Rate Limiting
 
-**Anthropic limits**: 5,000 RPM (requests per minute) and 500K TPM (tokens per minute)
+Anthropic enforces per-minute request and token limits that scale with account tier; the specific ceiling depends on which tier the deployed key is on.
 
 **Mitigation**:
 - Batch processing (multiple PDFs in one app session)
 - Model selection (Haiku for high-volume, Opus for complex)
-- Token caching (repeat summaries cost 1/5 as much)
+- Token caching (repeat summaries cost a fraction as much)
 
-### 2. **Error Recovery**
+### 2. Error Recovery
 
 **Transient errors** (network timeouts, rate limits):
 - Anthropic SDK auto-retries with exponential backoff
@@ -777,7 +760,7 @@ def test_clean_lines():
 - Non-blocking: other decks continue processing
 - User can download partial results
 
-### 3. **Cost Management**
+### 3. Cost Management
 
 **Per-deck cost** (Sonnet):
 - Input tokens: ~5,000-8,000 (slide text + metadata)
@@ -789,12 +772,12 @@ def test_clean_lines():
 - Output tokens: ~1,500-2,000 (thematic report)
 - Total: ~$0.10-0.20 per analysis
 
-**Cost savings**:
-- Haiku: 80% cheaper than Sonnet; 95% quality
-- Batch processing: Use cache write on first summary, cache read on themes analysis
-- Model selection: UI lets users choose cost vs. quality
+**Cost levers**:
+- Haiku: substantially cheaper than Sonnet, at a real but often acceptable quality tradeoff for simpler decks
+- Batch processing: cache write on the first summary, cache read on the themes analysis
+- Model selection: the UI lets users choose cost vs. quality directly
 
-### 4. **Privacy & Security**
+### 4. Privacy & Security
 
 **Data handling**:
 - PDFs uploaded to app; processed locally; sent to Anthropic API only
@@ -806,7 +789,7 @@ def test_clean_lines():
 - API key never logged or printed
 - Environment variable fallback for non-Streamlit deployments
 
-### 5. **Scalability**
+### 5. Scalability
 
 **Single instance** (current):
 - Handles 1-50 PDFs per session
@@ -818,7 +801,7 @@ def test_clean_lines():
 - Anthropic API handles concurrent requests
 - No shared state between instances
 
-### 6. **Monitoring & Observability**
+### 6. Monitoring & Observability
 
 **What's tracked**:
 - Tokens consumed per session (input, output, cached)
@@ -831,60 +814,51 @@ def test_clean_lines():
 - User identities (Streamlit Cloud doesn't auth)
 - LLM response quality (no feedback mechanism yet)
 
-**Improvement opportunities**:
-- Add LangSmith tracing for detailed observability
-- Add user feedback (thumbs up/down on summaries)
-- Add cost alerts (warn if exceeding threshold)
+**Gaps worth closing**:
+- No tracing (LangSmith or similar) for detailed observability
+- No user feedback loop (thumbs up/down on summaries)
+- No cost alerting if a session exceeds an expected threshold
 
 ---
 
 ## Development Roadmap
 
-### Implemented ✅
+### Implemented
 - Per-deck summarization (13 fields)
 - Cross-deck thematic analysis (10 themes)
 - Multi-model selection (Haiku/Sonnet/Opus)
 - Cost tracking and estimation
 - Vision-based title extraction fallback
-- Comprehensive error handling
+- Error handling across the pipeline
 - 86 unit tests
 - Streamlit Cloud deployment
 
-### Potential Enhancements 🚀
-- **Batch processing**: Drag-and-drop folder of PDFs
-- **Template selection**: Choose summary schema (executive, technical, business)
-- **Custom prompts**: User-provided system prompts
-- **Multi-language support**: Translate summaries to other languages
-- **Comparison mode**: Side-by-side analysis of 2-3 decks
-- **Search integration**: Index and search across all summaries
-- **Feedback loop**: User ratings to improve LLM prompts
-- **Caching strategy**: Store completed summaries to avoid re-processing
-- **Async processing**: Background jobs for large batches
+### Not Yet Built
+- **Batch processing**: drag-and-drop folder of PDFs
+- **Template selection**: choose summary schema (executive, technical, business)
+- **Custom prompts**: user-provided system prompts
+- **Multi-language support**: translate summaries to other languages
+- **Comparison mode**: side-by-side analysis of 2-3 decks
+- **Search integration**: index and search across all summaries
+- **Feedback loop**: user ratings to improve LLM prompts
+- **Caching strategy**: store completed summaries to avoid re-processing
+- **Async processing**: background jobs for large batches
 - **Export formats**: JSON, CSV, HTML in addition to Markdown
 
 ---
 
 ## Summary
 
-**Presentation PDF Summarizer** is a production-grade Python application demonstrating:
+Presentation PDF Summarizer is a Python application that pairs multi-model Claude integration (cost tracking, caching, vision fallback) with a PyMuPDF-based extraction pipeline and a Streamlit UI built around explicit, testable session state. Structured outputs come from system prompts with strict field schemas, validated and sanitized on parse. The 86-test suite covers the core logic (prompt building, model pricing, text cleaning, theme parsing) rather than the Streamlit UI layer itself, and the app runs both locally and on Streamlit Cloud without code changes.
 
-✅ **LLM Integration**: Multi-model Claude API with cost optimization  
-✅ **PDF Processing**: PyMuPDF for smart content extraction  
-✅ **Web UI**: Streamlit with sophisticated session state management  
-✅ **Prompt Engineering**: Structured outputs via system prompts and JSON parsing  
-✅ **Error Handling**: Graceful degradation and user-facing error messages  
-✅ **Testing**: 86 unit tests across all core modules  
-✅ **Deployment**: Works locally and on Streamlit Cloud  
-✅ **Design Patterns**: Orchestration, two-phase processing, configurable models  
-
-**Best practices**:
-- Minimal dependencies (only anthropic, pymupdf, streamlit)
-- Type hints and modern Python 3.11+
-- Clear separation of concerns (UI, extraction, LLM, formatting)
-- User-centric error messages and recovery flows
-- Transparent token tracking and cost estimation
+Design choices worth calling out on their own:
+- Three dependencies total (anthropic, pymupdf, streamlit) — no heavier framework pulled in for what these three already cover
+- Type hints throughout, targeting modern Python 3.11+
+- Clear separation between UI, extraction, LLM calls, and formatting, so each is independently testable
+- Errors surface to the user with enough detail to fix and retry, rather than failing silently
+- Token and cost accounting is visible in the UI itself, not something the user has to check separately
 
 ---
 
 *Last Updated: June 2026*
-*Production Status: Live & Maintained*
+*Status: Live & Maintained*

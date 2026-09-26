@@ -1,23 +1,23 @@
 # Technologies Reference Sheet
 ## Presentation PDF Summarizer
 
-Quick reference for all technologies, frameworks, and tools used in this project.
+Quick reference for the technologies, frameworks, and tools used in this project.
 
 ---
 
-## 🤖 Core Technologies
+## Core Technologies
 
 ### Anthropic Claude API
 
 **Models Available**:
-- `claude-opus-4-6`: Most capable; best for complex reasoning ($15 in / $75 out per M tokens)
-- `claude-sonnet-4-6`: Balanced; default model ($3 in / $15 out per M tokens) ⭐ **Default**
-- `claude-haiku-4-5-20251001`: Fastest; cheapest ($0.80 in / $4 out per M tokens)
+- `claude-opus-4-6`: most capable; best for complex reasoning ($15 in / $75 out per M tokens)
+- `claude-sonnet-4-6`: balanced; default model ($3 in / $15 out per M tokens)
+- `claude-haiku-4-5-20251001`: fastest; cheapest ($0.80 in / $4 out per M tokens)
 
 **Features Used**:
-- Messages API: Structured text summarization
-- Vision API: Title extraction from slide images (PNG)
-- JSON mode: Enforced structure for 13-field output
+- Messages API: structured text summarization
+- Vision API: title extraction from slide images (PNG)
+- JSON mode: enforced structure for 13-field output
 - Prompt caching: 90% cost savings on repeated content
 
 **Version**: `anthropic>=0.94.1`
@@ -41,20 +41,20 @@ response = client.messages.create(
 
 ---
 
-## 📄 PDF Processing
+## PDF Processing
 
 ### PyMuPDF (fitz)
 
-**Purpose**: Extract text, images, metadata from PDF slides
+**Purpose**: extract text, images, metadata from PDF slides
 
 **Key Methods**:
-- `fitz.open(path)`: Open PDF
-- `doc.load_page(i)`: Get page object
-- `page.get_text('text')`: Extract text
-- `page.get_images(full=True)`: List images
-- `page.get_pixmap(matrix=...)`: Render as PNG (for vision API)
-- `doc.is_encrypted`: Check if password-protected
-- `len(doc)`: Page count
+- `fitz.open(path)`: open PDF
+- `doc.load_page(i)`: get page object
+- `page.get_text('text')`: extract text
+- `page.get_images(full=True)`: list images
+- `page.get_pixmap(matrix=...)`: render as PNG (for vision API)
+- `doc.is_encrypted`: check if password-protected
+- `len(doc)`: page count
 
 **Use Cases**:
 - PDF validation (encryption, empty pages)
@@ -62,28 +62,28 @@ response = client.messages.create(
 - Title extraction via vision (fallback)
 - Metadata (slide count, content type detection)
 
-**Version**: Latest
+**Version**: latest
 
 ---
 
-## 🌐 Web Framework
+## Web Framework
 
 ### Streamlit
 
-**Purpose**: Interactive web UI for file upload, processing, and download
+**Purpose**: interactive web UI for file upload, processing, and download
 
 **Components Used**:
-- `st.set_page_config()`: Page setup (title, layout="centered")
-- `st.file_uploader()`: Multi-file PDF upload
+- `st.set_page_config()`: page setup (title, layout="centered")
+- `st.file_uploader()`: multi-file PDF upload
 - `st.button()`: Summarize and Analyze Themes buttons
-- `st.progress()`: Progress bar for batch processing
-- `st.empty()`: Placeholder for status text
-- `st.selectbox()`: Model selection dropdown
-- `st.session_state`: Persistent state across reruns
-- `st.download_button()`: Download markdown files
-- `st.success()`, `st.error()`, `st.warning()`, `st.info()`: Status messages
-- `st.spinner()`: Loading indicator
-- `st.sidebar`, `st.expander()`, `st.tabs()`: Layout
+- `st.progress()`: progress bar for batch processing
+- `st.empty()`: placeholder for status text
+- `st.selectbox()`: model selection dropdown
+- `st.session_state`: persistent state across reruns
+- `st.download_button()`: download markdown files
+- `st.success()`, `st.error()`, `st.warning()`, `st.info()`: status messages
+- `st.spinner()`: loading indicator
+- `st.sidebar`, `st.expander()`, `st.tabs()`: layout
 
 **Session State Keys Tracked**:
 ```python
@@ -108,28 +108,28 @@ themes_usage          # Token counts from theme analysis
 
 ---
 
-## 🐍 Python Libraries
+## Python Libraries
 
 ### Core Python
 - **Version**: 3.11+
-- **Features Used**: Type hints, match statements, f-strings, walrus operator (`:=`)
+- **Features Used**: type hints, match statements, f-strings, walrus operator (`:=`)
 - **Modules**: 
-  - `os`, `sys`: Environment, paths
-  - `pathlib.Path`: Modern file paths
-  - `tempfile`: Temporary directories
+  - `os`, `sys`: environment, paths
+  - `pathlib.Path`: modern file paths
+  - `tempfile`: temporary directories
   - `json`: JSON parsing/validation
-  - `re`: Regex for text extraction
+  - `re`: regex for text extraction
   - `tomllib`: TOML config parsing (Python 3.11+)
   - `argparse`: CLI argument parsing
-  - `collections.abc.Callable`: Type hints for callbacks
+  - `collections.abc.Callable`: type hints for callbacks
 
 ### Testing
 - **pytest**: 86 unit tests
-- **pytest-cov** (optional): Coverage reporting
+- **pytest-cov** (optional): coverage reporting
 
 ---
 
-## 📊 Data Structures
+## Data Structures
 
 ### Core Data Models
 
@@ -178,7 +178,7 @@ usage = {
 
 ---
 
-## 🏗️ Project Configuration
+## Project Configuration
 
 ### Streamlit Config (`.streamlit/config.toml`)
 ```toml
@@ -204,7 +204,7 @@ pdf_limit = 3
 
 ---
 
-## 📦 Dependency Graph
+## Dependency Graph
 
 ```
 Presentation PDF Summarizer
@@ -229,36 +229,36 @@ Presentation PDF Summarizer
 
 ---
 
-## 🔄 Processing Pipeline Technologies
+## Processing Pipeline Technologies
 
 ### Text Processing
-- **Regex** (`re` module): Pattern matching for titles, metrics, control characters
-- **String methods**: Strip, split, join, replace
-- **Normalization**: Case conversion (titlecase with "iOS" handling)
-- **Sanitization**: Remove Unicode artifacts, control characters
+- **Regex** (`re` module): pattern matching for titles, metrics, control characters
+- **String methods**: strip, split, join, replace
+- **Normalization**: case conversion (titlecase with "iOS" handling)
+- **Sanitization**: remove Unicode artifacts, control characters
 
 ### List Parsing
-- **Pattern matching**: Detect numbered sequences (1, 2, 3) or bullets
-- **Heuristics**: Distinguish "process steps" from "named items"
-- **Rendering**: Convert to "N-step process" format
+- **Pattern matching**: detect numbered sequences (1, 2, 3) or bullets
+- **Heuristics**: distinguish "process steps" from "named items"
+- **Rendering**: convert to "N-step process" format
 
 ### Chart Detection
 - **Numeric pattern matching**: `\d|%` regex
 - **Keyword hinting**: "trend", "increase", "decrease", "axis"
-- **False positive filtering**: Org charts without data
+- **False positive filtering**: org charts without data
 
 ### Content Classification
 - **Image detection**: PyMuPDF `get_images()`
-- **Text availability**: Check extracted text length
-- **Chart/table marking**: Numeric data + keywords
+- **Text availability**: check extracted text length
+- **Chart/table marking**: numeric data + keywords
 
 ---
 
-## 🔐 Security & Authentication
+## Security & Authentication
 
 ### API Key Management
 - **Streamlit local**: `.streamlit/secrets.toml` (git-ignored)
-- **Streamlit Cloud**: Secrets manager in dashboard
+- **Streamlit Cloud**: secrets manager in dashboard
 - **CLI/Script**: `ANTHROPIC_API_KEY` environment variable
 
 ### Data Privacy
@@ -268,13 +268,12 @@ Presentation PDF Summarizer
 - API calls logged only for token counting
 
 ### Dependency Security
-- Minimal dependencies (3 core packages)
-- No known vulnerabilities (as of June 2026)
-- Regular updates recommended for anthropic, streamlit
+- Three core packages, kept deliberately minimal to limit the dependency surface
+- No automated vulnerability scanning or update bot wired up yet — updates are manual
 
 ---
 
-## 📈 Monitoring & Observability
+## Monitoring & Observability
 
 ### Token Tracking
 - Input tokens (prompt + content)
@@ -295,23 +294,23 @@ cost = (
 ### Metrics Exposed in UI
 - Tokens: `234,567 in / 12,345 out / 567 cached`
 - Estimated USD: `$0.0234`
-- Processing time: Implicit (progress bar)
+- Processing time: implicit (progress bar)
 
 ---
 
-## 🧪 Testing Technologies
+## Testing Technologies
 
 ### Test Framework: pytest
 
 **Test Modules**:
-- `test_content_builders.py` (6 tests): Title/author extraction, chart detection
-- `test_list_parsing.py` (2 tests): Sequence detection, rendering
-- `test_llm_summarizer.py` (20 tests): Prompt building, response validation
-- `test_model_config.py` (18 tests): Model registry, pricing, costs
-- `test_text_processing.py` (3 tests): Cleaning, normalization, sanitization
-- `test_theme_analyzer.py` (17 tests): Deck parsing, indexing
-- `test_summarizer_contract.py` (19 tests): Integration test (optional)
-- `test_placeholder.py` (1 test): Placeholder (no-op)
+- `test_content_builders.py` (6 tests): title/author extraction, chart detection
+- `test_list_parsing.py` (2 tests): sequence detection, rendering
+- `test_llm_summarizer.py` (20 tests): prompt building, response validation
+- `test_model_config.py` (18 tests): model registry, pricing, costs
+- `test_text_processing.py` (3 tests): cleaning, normalization, sanitization
+- `test_theme_analyzer.py` (17 tests): deck parsing, indexing
+- `test_summarizer_contract.py` (19 tests): integration test (optional)
+- `test_placeholder.py` (1 test): placeholder (no-op)
 
 **Test Execution**:
 ```bash
@@ -321,14 +320,11 @@ pytest tests/ -k "clean"                   # Pattern matching
 pytest tests/ --cov=src/pdf_summary        # Coverage report
 ```
 
-**Coverage**:
-- Core functions: ~85-90% line coverage
-- Error paths: ~70% coverage
-- Integration: Contract tests only (minimal)
+**Coverage**: concentrated on the core pipeline logic (prompt building, parsing, pricing) rather than the Streamlit UI layer, which isn't exercised by the test suite.
 
 ---
 
-## 🚀 Deployment Technologies
+## Deployment Technologies
 
 ### Local Development
 - **OS**: Windows, macOS, Linux
@@ -339,91 +335,87 @@ pytest tests/ --cov=src/pdf_summary        # Coverage report
 ### Streamlit Cloud Deployment
 - **Hosting**: Streamlit Community Cloud (free)
 - **CI/CD**: GitHub auto-deploy on push
-- **Secrets**: Web dashboard
-- **Scaling**: Automatic
+- **Secrets**: web dashboard
+- **Scaling**: automatic
 
-### Alternative Deployments
-- **Docker**: Custom Dockerfile (not included)
-- **AWS Lambda**: Via FastAPI wrapper (not included)
-- **Heroku**: Via Procfile (not included)
+### Alternative Deployments (not built)
+- Docker: would need a Dockerfile, not currently in the repo
+- AWS Lambda: would need a FastAPI wrapper
+- Heroku: would need a Procfile
 
 ---
 
-## 📚 Version Reference
+## Version Reference
 
-### Pinned Versions
+### Dependency Pinning
 ```
-anthropic >= 0.94.1    (Latest features)
-pymupdf                (Auto-latest)
-streamlit              (Auto-latest)
-pytest                 (Auto-latest, for testing)
+anthropic >= 0.94.1    (floor pinned; otherwise auto-latest)
+pymupdf                (auto-latest)
+streamlit              (auto-latest)
+pytest                 (auto-latest, for testing)
 ```
+
+No lockfile — installs resolve to whatever's current at install time. Fine for a personal demo project; would need locking down for anything with more than one contributor or a CI pipeline.
 
 ### Compatibility
-- **Python**: 3.11, 3.12, 3.13 (expected)
+- **Python**: 3.11, 3.12, 3.13 (expected, not exhaustively tested)
 - **OS**: Windows, macOS, Linux
-- **Browsers**: Modern browsers (Chrome, Firefox, Safari, Edge)
+- **Browsers**: modern browsers (Chrome, Firefox, Safari, Edge)
 
 ---
 
-## 🔗 External Services
+## External Services
 
 ### Anthropic Claude API
 - **Endpoint**: `https://api.anthropic.com/v1/messages`
 - **Authentication**: API key in Authorization header
-- **Rate Limits**: 5,000 RPM, 500K TPM
-- **Availability**: 99.9% SLA (enterprise)
+- **Rate limits**: per-minute request and token limits that scale with account tier; not something this app manages or negotiates directly
 
 ### Streamlit Community Cloud
-- **Endpoint**: User-provided URL (e.g., `pdfsum-project.streamlit.app`)
+- **Endpoint**: user-provided URL (e.g., `pdfsum-project.streamlit.app`)
 - **Infrastructure**: Streamlit-managed
-- **Limits**: Free tier: 3 active apps, 1 GB storage
-- **Scaling**: Automatic (up to 3 concurrent sessions)
+- **Limits**: free tier caps active apps and storage per account
+- **Scaling**: automatic within the free tier's session limits
 
 ---
 
-## 💡 Technology Choices & Rationale
+## Technology Choices & Rationale
 
 ### Why PyMuPDF (not pdfplumber / pypdf)?
-- **Speed**: Fastest extraction for text + images
-- **Vision support**: Direct PNG rendering for Claude vision
-- **Reliability**: Handles encrypted PDFs, empty pages gracefully
-- **Size**: Minimal; no heavy dependencies
+- Fast text and image extraction
+- Direct PNG rendering, needed for the Claude vision fallback
+- Handles encrypted PDFs and empty pages without extra wrapper code
+- No heavy dependency chain
 
 ### Why Streamlit (not Dash / FastAPI)?
-- **Speed to market**: Build in hours, not days
-- **UX**: Great defaults (file upload, progress bars)
-- **Deployment**: Single command (no infra)
-- **State management**: Built-in session state
-- **Limitation**: Only synchronous I/O (acceptable here)
+- Fastest path from idea to a working UI for this kind of upload-process-download flow
+- File upload, progress bars, and session state are built in rather than assembled from parts
+- Single-command deployment, no separate infrastructure to stand up
+- Tradeoff: synchronous only — acceptable here since the app processes one batch at a time, would need reconsidering for concurrent multi-user load
 
 ### Why Anthropic (not OpenAI)?
-- **Vision API**: Better for title extraction fallback
-- **Pricing**: Sonnet is 1/5 cost of GPT-4
-- **Performance**: On-par quality with faster inference
-- **Prompt caching**: 90% cost savings on repeated content
+- Vision API fit the title-extraction fallback need directly
+- Sonnet pricing compares favorably to GPT-4-class models at similar quality
+- Prompt caching cuts repeated-content cost substantially
 
 ### Why Minimal Dependencies?
-- **Security**: Smaller attack surface
-- **Performance**: Faster startup (critical for Streamlit)
-- **Reliability**: Fewer version conflicts
-- **Simplicity**: Easy to understand entire stack
-- **Cost**: Smaller Docker images
+- Smaller attack surface and fewer version conflicts to manage
+- Faster Streamlit cold-start
+- Easier for someone else (or future me) to read the entire stack in one sitting
 
 ---
 
-## 🆕 Tech Stack Comparison Table
+## Tech Stack Comparison
 
 | Aspect | Choice | Alternative(s) | Why |
 |--------|--------|-----------------|-----|
-| **LLM** | Anthropic Claude | OpenAI GPT-4, Gemini | Cheaper + vision API |
-| **PDF** | PyMuPDF | pdfplumber, pypdf | Fastest + PNG rendering |
-| **Web** | Streamlit | Dash, FastAPI | Rapid development + built-in UI |
-| **Config** | TOML | YAML, JSON, env vars | Modern, Python 3.11+ native |
-| **Testing** | pytest | unittest, nose | Simpler syntax, better fixtures |
-| **Deployment** | Streamlit Cloud | AWS, Heroku, Docker | Free + auto-scaling |
+| **LLM** | Anthropic Claude | OpenAI GPT-4, Gemini | Cheaper at comparable quality, plus a vision API this project actually uses |
+| **PDF** | PyMuPDF | pdfplumber, pypdf | Fastest extraction, with PNG rendering built in |
+| **Web** | Streamlit | Dash, FastAPI | Fastest path to a working UI for this shape of workflow |
+| **Config** | TOML | YAML, JSON, env vars | Native `tomllib` support in Python 3.11+ |
+| **Testing** | pytest | unittest, nose | Simpler fixtures and assertion syntax |
+| **Deployment** | Streamlit Cloud | AWS, Heroku, Docker | Free and zero infrastructure to manage for a single-instance demo |
 
 ---
 
 *Last Updated: June 2026*
-*Minimal, modern, production-grade stack*
