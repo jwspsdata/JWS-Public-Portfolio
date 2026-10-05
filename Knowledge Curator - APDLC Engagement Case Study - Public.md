@@ -71,7 +71,7 @@ Obsidian Vault (curated-vault/)
 
 **Orchestrator** — coordinates the overall workflow; reads persisted state (latest Sent Date per inbox); dispatches ingest per configured inbox; aggregates results and triggers notification.
 
-**Ingest** — fetches emails from Gmail API; validates sender against an exact-match allowlist; extracts URL and body text; routes to Summarization or Filing.
+**Ingest** — fetches emails via IMAP/SMTP; validates sender against an exact-match allowlist; extracts URL and body text; routes to Summarization or Filing.
 
 **Summarization** — fetches URL content via `httpx` + `trafilatura`; calls Claude Sonnet for a grounded summary (source-only; no editorializing); tags output with limit indicators (`content-truncated`, `limited-access`).
 
