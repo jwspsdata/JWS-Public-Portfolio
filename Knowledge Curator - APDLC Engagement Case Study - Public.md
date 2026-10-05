@@ -273,6 +273,10 @@ The most significant outcome of Knowledge Curator's Build phase isn't the runnin
 
 One finding in particular illustrates why real engagements matter more than theoretical design: an AI-directed build (an AI agent doing the implementation work, with a human resolving open questions as they arise) naturally produces a decision log of every point where a human had to step in. That log turns out to be a direct, measurable readout of exactly what a fully autonomous build of the same system would need to have specified in advance — a concrete bridge between how AI-assisted development is done today and what autonomous development will require going forward. This is now captured explicitly in the framework as a reusable pattern, not just a one-off observation about this project.
 
+### Later: Evidence for the Evaluate Build-Out (APDLC v12)
+
+Knowledge Curator went on to serve the framework a second time. When APDLC's Evaluate phase was built out in v12, the new evaluation design was checked against this running system before it was released. The check found that some of Knowledge Curator's quality assurance had quietly relied on the owner reading its output, a check that works for one person but doesn't scale and isn't recorded anywhere. It also showed that the decisions an operator makes when reviewing exceptions are a ready-made source of labelled evaluation cases. Both observations went into the framework's evaluation guidance. The engagement itself ran under v10; this later check is the reason it remains part of the framework's evidence base.
+
 ---
 
 ## What Is Not in This Document
@@ -292,6 +296,6 @@ Full background: [linkedin.com/in/johnwspangler](https://www.linkedin.com/in/joh
 ---
 
 *Author: John W. Spangler*  
-*Version: 2.0 (July 2026)*  
+*Version: 2.1 (October 2026)*  
 *Engagement Status: Design Complete | Build Complete | Live in Production*  
-*Framework: APDLC v10*
+*Framework: APDLC v10 (engagement); evidence check for APDLC v12 Evaluate*

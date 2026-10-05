@@ -1,8 +1,8 @@
 # APDLC: AI Product Development Life Cycle
 ## A Framework for AI-Enabled Products — Public Overview
 
-**Current Version**: v10  
-**Status**: Actively developed; first production engagement (Knowledge Curator) complete through Build — its Build-phase findings drove the v10 elevation of Build to a first-class phase  
+**Current Version**: v12.2  
+**Status**: Actively developed. The first production engagement (Knowledge Curator) is complete through Build, and its Build-phase findings drove the v10 elevation of Build to a first-class phase. v11 folded in a cross-project engineering audit; v12 builds out the Evaluate phase, tested against two real systems before release.  
 **Type**: Proprietary methodology framework — this document is a capabilities overview only
 
 ---
@@ -12,8 +12,8 @@
 - **Why it matters** — most AI investment still stalls before real ROI; pilots don't reach durable production. AI practices are evolving so rapidly, teams are torn between delivery and keeping up. APDLC exists to close these gaps.
 - **What it is** — a lightweight, risk-proportionate lifecycle and agentic reference architecture for taking AI-enabled products from idea to durable operation.
 - **Where it sits** — the product "outer loop" above the increasingly AI-automated SDLC; it ties together existing standards, patterns, and tools rather than replacing them.
-- **How it governs** — governance scales with assessed risk (enough for a regulated system, not theater for a prototype) and maps to NIST AI RMF, ISO/IEC 42001, and the OWASP LLM Top 10.
-- **Where it stands** — v10, refined through dry runs and now through a real build; first real engagement (Knowledge Curator) has completed Frame, Design, and Build, with its Build-phase learnings folded back into the framework.
+- **How it governs** — governance scales with assessed risk (enough for a regulated system, not theater for a prototype) and aligns with the NIST AI RMF and the OWASP LLM Top 10. For organizations running ISO/IEC 42001 it produces product-lifecycle evidence, and a published crosswalk states honestly what is covered, what is partial, and where deeper mapping is warranted.
+- **Where it stands** — v12.2, refined through dry runs, a real build, a code-level audit across a portfolio of AI projects, an evaluation build-out checked against two real systems, and a cross-check against comparable lifecycle standards and methods. The first real engagement (Knowledge Curator) has completed Frame, Design, and Build, and its learnings are folded back into the framework.
 - **Who built it** — an architect who has worked through every major tech transformation of the past two decades, where the human and organizational dimension is the recurring blind spot.
 
 ---
@@ -22,7 +22,7 @@
 
 APDLC is a framework I developed around a problem that's now widely reported: companies are struggling to turn AI investment into real ROI. Pilots stall, and systems that do ship often don't hold up in production. In addition, the staggering pace and volume of leading AI practices overwhelms even the most talented delivery teams. The model is rarely the hard part; the work around it is: governance, evaluation, human oversight, operational cost, and the fact that AI systems drift after launch. That work is what APDLC organizes.
 
-APDLC gives that shape a name and a structure. It has been developed across ten iterations and pressure-tested through structured dry-run engagements — realistic scenarios run end-to-end to find where it breaks before a real build depends on it. Its first production engagement has completed the Frame, Design, and Build phases, with real artifacts; the build itself surfaced the findings that elevated Build to a first-class phase in v10.
+APDLC gives that shape a name and a structure. It has been developed across twelve iterations and pressure-tested through structured dry-run engagements — realistic scenarios run end-to-end to find where it breaks before a real build depends on it. Its first production engagement has completed the Frame, Design, and Build phases, with real artifacts; the build itself surfaced the findings that elevated Build to a first-class phase in v10.
 
 This framework is shaped by a particular vantage point. I have worked through the major enterprise technology transformations of the past two decades — the web, virtualization, cloud, Agile, Lean IT, and DevOps — as an individual contributor, a manager, and a coach. Every one of those waves under-invested in the human and organizational dimension and over-invested in the technology itself. AI is repeating the pattern. APDLC is built by someone who has lived and learned through these major Technology transformations.
 
@@ -38,7 +38,7 @@ Building AI-enabled products is not a software engineering problem dressed up wi
 - **The "build" decision is multi-dimensional** — buy vs. build, which model, which orchestration form, what evaluation harness — and these choices interact
 - **Agentic systems are not just "more AI"** — they introduce coordination problems, failure cascade risks, and audit requirements that don't exist in simpler LLM integrations
 - **The field is evolving faster than most teams can track** — new models, patterns, and tooling emerge continuously. Without a structured foundation, teams burn energy on "what are we missing?" and high-stakes concerns get addressed inconsistently or not at all — not from negligence, but because nothing made the right path the easy one to take.
-- **Overweight governance makes things worse, not better** — process disproportionate to actual risk gets ignored or worked around. Teams quickly spot which steps are theater and route around them, leaving the overhead without the protection.
+- **Overweight governance makes things worse, not better** — process disproportionate to actual risk gets ignored or worked around. Teams quickly spot which steps are theater and route around them, leaving the overhead without the protection. I watched ITIL and SAFe grow heavy this way, which is why APDLC limits its own growth, not just each team's paperwork: every addition names the risk tier it applies to, and the prototype path is treated as a budget.
 
 A structured framework removes that friction: when the standing concerns are already encoded — risk, governance, evaluation, human control, cost — teams can put their full attention on the problem they're actually solving. What was missing was never good practice; it was something to tie it together into one coherent path from idea to operation. That integration is what APDLC is.
 
@@ -56,6 +56,7 @@ Key design decisions I made here:
 - The lifecycle is **explicitly non-linear**. Evaluation findings should be able to trigger redesign; operational learnings should be able to trigger re-framing. Frameworks that force linearity cause teams to ignore evidence.
 - **Human-in-the-loop strategy is a first-class phase concern**, not an afterthought. The framework forces teams to define their autonomy posture and escalation logic before they build, not after.
 - **Cost is a continuous concern**, modeled in design and tracked in operations — not discovered after the invoice arrives.
+- **"Should this be AI at all?" is the first question, and retirement is a designed outcome.** Framing checks whether a simpler approach would do the job before anything is framed as an AI product. At the other end, the lifecycle has a deliberate exit: a product that no longer earns its place is retired on purpose, with access revoked and records kept, rather than left running unwatched.
 
 **Layer 2: The AI-Native Agentic Reference Architecture**
 
@@ -72,6 +73,8 @@ Key design decisions I made here:
 ## How APDLC Relates to What Already Exists
 
 The field does not lack good practice. Governance standards (NIST AI RMF, ISO/IEC 42001), agent patterns (12-Factor Agents, and guidance from Anthropic and Google), and orchestration tooling (LangGraph and its peers) are each strong — they simply live at different altitudes, and none alone carries an AI *product* from idea to operation. APDLC's job is to tie them together, not replace them.
+
+Lifecycle methods for AI exist too, and APDLC was checked against them: the ISO/IEC 5338 life cycle process standard, CRISP-ML(Q), academic work on evaluation-driven development of LLM agents, the cloud vendors' agent and generative-AI lifecycles, and the UK Government's AI Playbook. Each covers part of the ground: a process set to conform to, evaluation alone, a model-centric process, or a lifecycle bound to one vendor's platform. Several reach the same conclusions APDLC does, which is welcome independent evidence. What APDLC adds is one stack-agnostic path across the whole outer loop, with a few distinctions the others don't draw: human authority designed per capability, runtime autonomy kept separate from how autonomously the system is *built*, evaluation methods matched to how knowable the right answer is, and checks on the evaluators themselves.
 
 The **inner-loop / outer-loop** distinction is well established in software delivery, and recent work like Kim & Yegge's *Vibe Coding* extends it to AI-assisted development. APDLC applies it at the product level. The SDLC — writing, testing, shipping code — is the inner loop, increasingly the domain of AI development agents (a practice now emerging as the **Agentic Development Lifecycle, ADLC**). This elevates experienced engineers rather than displacing them: their leverage moves up from producing code to directing and governing the systems that produce it.
 
@@ -101,6 +104,7 @@ APDLC is not a parallel invention that ignores the governance work the field has
 
 - **NIST AI Risk Management Framework (AI 100-1)** and the **Generative AI Profile (AI 600-1)** — the Govern, Map, Measure, and Manage functions align with APDLC's lifecycle phases and cross-cutting control planes
 - **ISO/IEC 42001:2023** — informs the governance and accountability framing for AI management systems
+- **ISO/IEC 5338:2023** — the AI system life cycle processes; APDLC phases produce evidence for these processes
 - **OWASP Top 10 for LLM Applications (2025)** — anchors the agentic threat model, including prompt injection, indirect injection, and excessive agency
 
 This means a team using APDLC is not choosing between a practical framework and standards compliance — the framework is a path toward both at once, calibrated to the assessed risk tier.
@@ -123,8 +127,12 @@ Evaluating a non-deterministic system is not the same as testing deterministic s
 
 - **Non-determinism** — quality is judged across multiple runs against thresholds, not a single pass/fail assertion.
 - **Evaluation-first** — success criteria and quality thresholds are set in the Frame phase, before anything is built — not reverse-engineered just before release.
+- **Proportionate harness up front, not big design up front** — APDLC specifies the bar and the boundaries early (success criteria, evaluation and interface contracts, hard limits, the coding agent's permissions), sized by risk, and lets the design emerge inside them. That honors spec-driven development without guessing the solution's structure in advance.
 - **Multi-modal and layered** — evaluation runs pre-deployment (offline benchmarks, harness runs, red-teaming), at runtime (live metrics, drift detection, A/B comparison), and post-incident (root-cause analysis feeding new regression tests), across unit, system, and production levels.
-- **AI-assisted, but not self-certifying** — where AI is used to evaluate AI, the evaluator's own reliability is something to be checked, not assumed.
+- **AI-assisted, but not self-certifying** — where AI is used to evaluate AI, the evaluator's own reliability is checked, not assumed. The same goes for reference answers: they must not come from the system they are grading.
+- **Method fits what can be known** — some behaviors have a right answer known in advance, some can be worked out by experts, and some only emerge in real use. APDLC classifies each behavior it evaluates on that basis, drawing on the Cynefin sense-making framework, and picks the evaluation method to match. Rigor is set separately, by risk. A high-risk behavior that can only be judged in use is carried by tighter human control while evidence accumulates.
+- **Traceable both ways** — every success criterion maps to evaluation tasks, and every known failure mode to a test, so it's visible when "what was promised" has nothing checking it.
+- **Evaluation doesn't stop at release** — changes that touch no code (a new model, a rewritten prompt, a changed judge) re-run the evaluation. Drift in operation is detected and routed back into improvement, with a tiered, human-gated response.
 
 The detailed mechanics — harness design, scoring methods, rubrics — live in the reference architecture and supporting artifacts, not here. The point of this overview is the posture, not the recipe.
 
@@ -136,11 +144,14 @@ APDLC did not arrive fully formed. The version history reflects real learning:
 
 - **Early versions** focused on getting the lifecycle phases right — what questions does each phase answer, what does it produce?
 - **Middle versions** added the architecture layer and formalized evaluation patterns, context engineering, and state management
-- **Recent versions** incorporated influence from external methodologies and leading agentic practice — most notably 12-Factor Agents, alongside published guidance from Anthropic and Google — added durable suspension and resume patterns, and formalized multi-channel trigger handling
-- **v9** named the delivery path concern for the first time and introduced the AADG (AI Autonomous Development Guide), which acknowledges that the future will have autonomous agentic development teams and addresses the unique requirements that brings
+- **Recent versions** incorporated influence from external methodologies and leading agentic practice — most notably 12-Factor Agents, alongside published guidance from Anthropic — added durable suspension and resume patterns, and formalized multi-channel trigger handling
+- **v9** named the delivery path concern for the first time and introduced the AADG (AI Autonomous Development Guide) acknowledges the future will have autonomous Agentic development teams and the unique requirements it brings
 - **v10** elevated **Build to a first-class phase** with its own artifact set, driven by the first real APDLC build; it also surfaced the *autonomy-gap correlation* — an AI-directed build's decision log is a direct measurement of what an autonomous build of the same system would need specified up front
+- **v11** came from auditing roughly ten of my own AI projects at the code level, checking what each one actually does rather than what its documentation says. The recurring gaps between "tests pass" and "it really works as described" became verification steps in the framework. Named security risks gained concrete defenses. The framework now also holds itself to the same standards it asks of the systems it governs. v11 also cross-checks the framework against Google's 2026 whitepaper on the AI-transformed SDLC, and v11.2 against OpenAI's and Anthropic's AI-native SDLC playbooks. Both describe the inner loop that APDLC's outer loop surrounds.
+- **v12** built out **Evaluate**. The design was researched from primary sources, then checked against a real system (Knowledge Curator, which showed where its evaluation had quietly relied on the owner's eyes), then dry-run on a second (TechGuides, a retrieval system over technical manuals, which showed that reference answers generated from the system's own parser would certify its own errors). Both findings were folded in before release.
+- **v12.1** cross-checked APDLC against comparable lifecycle methods and standards, recorded where they independently agree and where APDLC goes further, and closed the gaps they exposed: a deliberate retirement path, an up-front "is AI the right tool?" question, a way for affected people to learn AI is involved and contest an outcome at higher-risk tiers, and finer-grained evaluation reporting.
 
-Each iteration came from either a structured dry-run that exposed a gap, or external thinking that I assessed, adapted, and integrated — not wholesale adopted. A continuous improvement feedback loop is embedded explicitly in APDLC itself. The first production engagement has now taken the framework through a live build, and its Build-phase findings fed directly into the v10 iteration.
+Each iteration came from a structured dry-run that exposed a gap, a real build, an audit, or external thinking that I assessed, adapted, and integrated rather than adopted wholesale. A continuous improvement feedback loop is built explicitly into the APDLC. The first production engagement took the framework through a live build, and its Build-phase findings fed directly into v10. A code-level audit across my project portfolio fed v11. Two real systems tested v12's evaluation design before it shipped.
 
 ---
 
@@ -163,8 +174,10 @@ A single-owner internal tool, yet specified rigorously enough that its build seq
 AI tooling in the development process has moved fast. The progression is real and accelerating:
 
 1. **AI-Assisted** — developers use AI tools to accelerate discrete tasks (code completion, test generation, documentation). Human judgment governs every decision; AI is a productivity multiplier.
-2. **AI-Directed** — a human defines the goal and acceptance criteria; an AI agent executes the work, proposes solutions, and iterates. The human reviews and approves, but is no longer doing the work step-by-step.
-3. **AI-Autonomous** — an AI agent receives a goal, decomposes it, executes it, evaluates it, and delivers it with minimal or no human involvement in the loop. The human's role shifts to goal-setting and outcome review.
+2. **AI-Directed** — a human defines the goal and acceptance criteria; an AI agent executes the work, proposes solutions, and iterates. The agent may write all of the code, but when the specification is ambiguous or incomplete, a human resolves the gap before the agent proceeds.
+3. **AI-Autonomous** — an AI agent receives a goal, decomposes it, executes it, evaluates it, and delivers it without a human resolving gaps along the way. Gaps are either specified in advance or decided by the agent within pre-agreed bounds, and a human reviews those decisions afterward.
+
+That vocabulary is still settling across the industry, and it usually sorts stages by *who writes the code*. APDLC uses a sharper test: **who resolves specification gaps while the build is underway.** Human review happens on every path. What differs is whether the human's input arrives *before* the agent decides a gap or *after*. By that test, stages 1 and 2 are both what APDLC calls the AI-Directed path, and stage 3 is the AI-Autonomous path. A project can also mix the two by workstream.
 
 Most organizations are somewhere between stages 1 and 2 today — and the majority have not reasoned about the move toward stage 3 at all. The frameworks, governance patterns, and risk controls appropriate for stage 1 and 2 are not sufficient for stage 3, and practices for navigating that transition safely are still emerging. APDLC takes this problem up early, on purpose: better to frame the questions before organizations need the answers than after they have built something they cannot govern.
 
@@ -176,7 +189,7 @@ These interact but they are not the same thing. A fully autonomous production sy
 
 As the development process becomes more autonomous, new questions emerge that have no equivalent in traditional software work: How do you confirm an AI agent built what you intended when you cannot read every line it wrote? How do you define "done" precisely enough that the agent can judge its own work against it? Framing questions like these early is what the AADG is for.
 
-It is an early, deliberate position rather than a finished manual. The core idea it rests on — separating how the system behaves in production from how the work to build it gets done — is settled and holds up well today. The detailed guidance is still being evaluated and written.
+It is an early, deliberate position rather than a finished manual. The core idea it rests on — separating how the system behaves in production from how the work to build it gets done — is settled and holds up well today. The detailed guidance is still being evaluated, and it will be written from the evidence of a first autonomous pilot rather than in advance.
 
 ---
 
@@ -187,7 +200,7 @@ If you are reading this to assess capability rather than to use the framework:
 - **Systems thinking at product and architecture altitude simultaneously** — APDLC holds lifecycle concerns and implementation concerns in the same framework without conflating them
 - **Principled opinionation** — every design decision in the framework has a *reason*, and the reasons are grounded in actual failure modes, not preferences
 - **Domain-agnostic pattern recognition** — the same core concerns (risk posture, HITL strategy, evaluation, cost, auditability) appear in every AI-enabled product regardless of domain; APDLC surfaces them without prescribing domain-specific answers
-- **Iterative methodology development** — v10 is the result of treating the framework itself as a product with its own feedback loop; the Build phase was reshaped by findings from the framework's own first real build
+- **Iterative methodology development** — v12 is the result of treating the framework itself as a product with its own feedback loop. The Build phase was reshaped by findings from the framework's own first real build, then by a code-level audit that turned the same scrutiny back on the framework itself. The Evaluate phase was tested against real systems before it was released.
 
 ---
 
@@ -210,5 +223,5 @@ Full background: [linkedin.com/in/johnwspangler](https://www.linkedin.com/in/joh
 ---
 
 *Author: John W. Spangler*  
-*Version: 10 (July 2026)*  
+*Version: 12.2 (October 2026)*  
 *Status: Actively developed; first production engagement (Knowledge Curator) complete through Build*

@@ -22,6 +22,8 @@ A public overview of a proprietary framework for taking AI-enabled products from
 - Explicit treatment of evaluation, governance, HITL, and cost
 - AI-native reference architecture for agentic systems
 - Risk-proportionate governance aligned to NIST AI RMF, ISO/IEC 42001, and OWASP Top 10 for LLM Applications
+- Evaluation as a designed discipline: methods matched to how knowable the right answer is, evaluators checked rather than trusted, and evaluation carried into operation
+- Cross-checked against comparable lifecycle standards and methods, including ISO/IEC 5338
 - Companion thinking on AI-assisted, AI-directed, and AI-autonomous development through the **AADG**
 
 ### 2) Knowledge Curator: APDLC Engagement Case Study
@@ -35,7 +37,7 @@ A public case study showing the APDLC framework applied to a real agentic knowle
 - Four-agent design: Orchestrator, Ingest, Summarization, Filing
 - Deterministic controls for sender validation and exception handling
 - Full design artifact set across architecture, state, risk, governance, and build handoff
-- Build-ready workstream plan for implementation
+- Built and running in production; its Build findings reshaped APDLC's own Build phase
 
 ### 3) Presentation PDF Summarizer
 
