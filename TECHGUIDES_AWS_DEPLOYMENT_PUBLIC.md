@@ -1,6 +1,6 @@
 # AWS Deployment
 
-Reference for the AWS deployment of TechGuides — written against what was actually built, not a proposal. This is a self-funded, cost-conscious **demonstration** of deploying a Dockerized version of the app to AWS — not a production system. Part 2 of this document separately describes what a real production deployment would add.
+Reference for the AWS deployment of TechGuides — written against what was actually built, not a proposal. This is a self-funded, cost-conscious **demonstration** of deploying a Dockerized version of the app to AWS — not a full production system. Part 2 of this document separately describes what a real production deployment would add.
 
 ## Part 1 — What was actually deployed
 
