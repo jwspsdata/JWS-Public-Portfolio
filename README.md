@@ -26,7 +26,44 @@ A public overview of a proprietary framework for taking AI-enabled products from
 - Cross-checked against comparable lifecycle standards and methods, including ISO/IEC 5338
 - Companion thinking on AI-assisted, AI-directed, and AI-autonomous development through the **AADG**
 
-### 2) Knowledge Curator: APDLC Engagement Case Study
+### 2) Healthcare Payment Reconciliation Program
+
+[Healthcare-Payment-Reconciliation-Program/](Healthcare-Payment-Reconciliation-Program/)
+
+A program that matches synthetic insurer deposits to their remittances, flags what doesn't match, and tests where AI actually earns its place against free deterministic baselines. All data is synthetic.
+
+**Live demo (replay only, synthetic data):** [hcpayreconcile.streamlit.app](https://hcpayreconcile.streamlit.app)
+
+#### Program Summary
+
+[PUBLIC_SUMMARY.md](Healthcare-Payment-Reconciliation-Program/PUBLIC_SUMMARY.md)
+
+**Highlights:**
+- Coded rules (exact, near-miss, grouping) do most of the matching at no per-item cost; people review everything the rules aren't trusted to decide
+- Three narrow AI steps tested against free baselines, under an evaluation plan fixed before the test data existed
+- AI verifier kept to spot-check trusted rules; AI match proposer and variance explainer switched off when they didn't beat the free baselines
+- Analogue Cost Model gives each step a break-even point instead of an arbitrary accuracy target
+- Integer-cent money, quarantine instead of dropping bad records, append-only audit log, and resistance to prompt injection planted in memo text
+- Replays recorded model outputs, so the demo and CI need no API key and cost nothing to run
+
+**Stack:** Python (uv), Pydantic, SQLite, Streamlit, Anthropic Python SDK (Message Batches), pytest, GitHub Actions, Synthea
+
+#### AWS Migration Mock
+
+[AWS_PUBLIC_SUMMARY.md](Healthcare-Payment-Reconciliation-Program/AWS_PUBLIC_SUMMARY.md)
+
+What it would take to move the app onto an enterprise-style AWS platform. The infrastructure is written as code and checked, but not deployed.
+
+**Highlights:**
+- Eight AWS CDK stacks in Python, checked under the cdk-nag AwsSolutions and HIPAA Security rule packs, with 30 template tests and negative controls
+- Claude on Amazon Bedrock, with guardrails that mask patient data, hold items with prompt injections, and require grounded explanations
+- Investigation agent on Bedrock AgentCore that only proposes; people decide every item
+- Aurora PostgreSQL with an append-only audit log plus an S3 Object Lock copy
+- Agent accuracy raised from 14/20 to 17/20 (40/41 on held-out items) by changing what the agent could see, not by rewording the prompt
+
+**Stack:** AWS CDK, Amazon Bedrock + AgentCore, Aurora PostgreSQL, S3, Docker, cdk-nag
+
+### 3) Knowledge Curator: APDLC Engagement Case Study
 
 [Knowledge Curator - APDLC Engagement Case Study - Public.md](Knowledge%20Curator%20-%20APDLC%20Engagement%20Case%20Study%20-%20Public.md)
 
@@ -39,7 +76,7 @@ A public case study showing the APDLC framework applied to a real agentic knowle
 - Full design artifact set across architecture, state, risk, governance, and build handoff
 - Built and running in production; its Build findings reshaped APDLC's own Build phase
 
-### 3) Presentation PDF Summarizer
+### 4) Presentation PDF Summarizer
 
 [Presentation-PDF-summarizer/](Presentation-PDF-summarizer/)
 
@@ -54,7 +91,7 @@ A production-ready Streamlit application that uses Claude to generate structured
 
 **Stack:** Python 3.11+, Anthropic Claude API, PyMuPDF, Streamlit
 
-### 4) AWS EC2 + Docker Deployment
+### 5) AWS EC2 + Docker Deployment
 
 [AWS-Deploy/](AWS-Deploy/)
 
