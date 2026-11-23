@@ -2,7 +2,7 @@
 ## A Framework for AI-Enabled Products — Public Overview
 
 **Current Version**: v12.2  
-**Status**: Actively developed. The first production engagement (Knowledge Curator) is complete through Build, and its Build-phase findings drove the v10 elevation of Build to a first-class phase. v11 folded in a cross-project engineering audit; v12 builds out the Evaluate phase, tested against two real systems before release.  
+**Status**: Actively developed. The first production engagement (Knowledge Curator) is complete through Build and live in production, and its Build-phase findings drove the v10 elevation of Build to a first-class phase. v11 folded in a cross-project engineering audit; v12 builds out the Evaluate phase, tested against two real systems before release.  
 **Type**: Proprietary methodology framework — this document is a capabilities overview only
 
 ---
@@ -13,7 +13,7 @@
 - **What it is** — a lightweight, risk-proportionate lifecycle and agentic reference architecture for taking AI-enabled products from idea to durable operation.
 - **Where it sits** — the product "outer loop" above the increasingly AI-automated SDLC; it ties together existing standards, patterns, and tools rather than replacing them.
 - **How it governs** — governance scales with assessed risk (enough for a regulated system, not theater for a prototype) and aligns with the NIST AI RMF and the OWASP LLM Top 10. For organizations running ISO/IEC 42001 it produces product-lifecycle evidence, and a published crosswalk states honestly what is covered, what is partial, and where deeper mapping is warranted.
-- **Where it stands** — v12.2, refined through dry runs, a real build, a code-level audit across a portfolio of AI projects, an evaluation build-out checked against two real systems, and a cross-check against comparable lifecycle standards and methods. The first real engagement (Knowledge Curator) has completed Frame, Design, and Build, and its learnings are folded back into the framework.
+- **Where it stands** — v12.2, refined through dry runs, a real build, a code-level audit across a portfolio of AI projects, an evaluation build-out checked against two real systems, and a cross-check against comparable lifecycle standards and methods. The first real engagement (Knowledge Curator) has completed Frame, Design, and Build and is live in production, and its learnings are folded back into the framework.
 - **Who built it** — an architect who has worked through every major tech transformation of the past two decades, where the human and organizational dimension is the recurring blind spot.
 
 ---
@@ -22,7 +22,7 @@
 
 APDLC is a framework I developed around a problem that's now widely reported: companies are struggling to turn AI investment into real ROI. Pilots stall, and systems that do ship often don't hold up in production. In addition, the staggering pace and volume of leading AI practices overwhelms even the most talented delivery teams. The model is rarely the hard part; the work around it is: governance, evaluation, human oversight, operational cost, and the fact that AI systems drift after launch. That work is what APDLC organizes.
 
-APDLC gives that shape a name and a structure. It has been developed across twelve iterations and pressure-tested through structured dry-run engagements — realistic scenarios run end-to-end to find where it breaks before a real build depends on it. Its first production engagement has completed the Frame, Design, and Build phases, with real artifacts; the build itself surfaced the findings that elevated Build to a first-class phase in v10.
+APDLC gives that shape a name and a structure. It has been developed across twelve iterations and pressure-tested through structured dry-run engagements — realistic scenarios run end-to-end to find where it breaks before a real build depends on it. Its first production engagement has completed the Frame, Design, and Build phases, with real artifacts, and is now live in production; the build itself surfaced the findings that elevated Build to a first-class phase in v10.
 
 This framework is shaped by a particular vantage point. I have worked through the major enterprise technology transformations of the past two decades — the web, virtualization, cloud, Agile, Lean IT, and DevOps — as an individual contributor, a manager, and a coach. Every one of those waves under-invested in the human and organizational dimension and over-invested in the technology itself. AI is repeating the pattern. APDLC is built by someone who has lived and learned through these major Technology transformations.
 
@@ -161,7 +161,7 @@ The framework's first production engagement is **Knowledge Curator** — an agen
 
 Knowledge Curator exists to keep pace with the very thing this framework wrestles with: the pace of change in AI practice. It summarizes personally currated emerging techniques into a dedicated, isolated vault — kept separate from 15+ years of personal career knowledge — with the eventual goal of connecting that vault to an LLM as a design and challenge partner. APDLC's first real test is itself a tool for staying current.
 
-Its Frame, Design, and Build phases are complete. Design alone produced a full set of structured artifacts — problem framing, agent and tool contracts, an orchestration graph, a failure-mode catalog, a cost model, escalation and human-approval policies, and a permission matrix — each reviewed against a defined role matrix before the build was authorized. Build then produced the framework's first real Build-phase artifacts (a decision log, a findings log, a workstream closeout discipline) and, through live testing, the findings that reshaped the framework's own Build phase.
+Its Frame, Design, and Build phases are complete, and it is live in production across all three monitored inboxes. Design alone produced a full set of structured artifacts — problem framing, agent and tool contracts, an orchestration graph, a failure-mode catalog, a cost model, escalation and human-approval policies, and a permission matrix — each reviewed against a defined role matrix before the build was authorized. Build then produced the framework's first real Build-phase artifacts (a decision log, a findings log, a workstream closeout discipline) and, through live testing, the findings that reshaped the framework's own Build phase.
 
 A single-owner internal tool, yet specified rigorously enough that its build sequence, failure handling, and cost envelope were all known before a line of production code was written.
 
@@ -224,4 +224,4 @@ Full background: [linkedin.com/in/johnwspangler](https://www.linkedin.com/in/joh
 
 *Author: John W. Spangler*  
 *Version: 12.2 (October 2026)*  
-*Status: Actively developed; first production engagement (Knowledge Curator) complete through Build*
+*Status: Actively developed; first production engagement (Knowledge Curator) complete through Build and live in production*
